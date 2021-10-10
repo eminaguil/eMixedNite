@@ -22,7 +22,7 @@ Big update for Playnite 9. Changes in the achievements panel and toggle between 
 ## Screenshots
 ![Screenshot](https://raw.githubusercontent.com/eminaguil/eMixedNite/master/screenshots/screenshot_01.png)
 
-![Screenshot](https://raw.githubusercontent.com/eminaguil/eMixedNitey/master/screenshots/screenshot_02.png)
+![Screenshot](https://raw.githubusercontent.com/eminaguil/eMixedNite/master/screenshots/screenshot_02.png)
 
 ## Installation 
 1. Download the latest packaged `pthm` theme file from the [Releases page.](https://github.com/eminaguil/eMixedNite/releases/latest)
