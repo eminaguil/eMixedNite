@@ -44,14 +44,15 @@ The supported plugins are:
 eMixedNite allows various options of customization throuh the use of [ThemeModifier](https://github.com/Lacro59/playnite-thememodifier-plugin)
 
 ### Color Schemas
-These color schemes are used for recoloring the theme. Thanks to the comunity here are some color schemas that work really nice with the theme:
+These color schemes are used for recoloring the theme, the details in the [ThemeModifier Wiki](https://github.com/Lacro59/playnite-thememodifier-plugin/wiki/Get-color-for-you-theme-from-another). And thanks to *Mellified* and *hunt363* for sharing some color schemas that work really nice with the theme.
 
-- Solarized Dark  adapted By Mellified, with a small change from me, for better look of progress bars.
-- Dracula adapted By hunt363
+- eMixedNite Redish The default eMidedNite redish color therme
+- Solarized Dark  [adapted By Mellified](https://playnite.link/forum/thread-337-post-2143.html#pid2143), with a small change from me, for better look of progress bars.
+- Dracula [adapted By hunt363](https://playnite.link/forum/thread-337-post-2711.html#pid2711)
 - BlackWine By me, a black theme with red whine accents
-- GruvBox Dark adapted By Mellified
+- GruvBox Dark [adapted By Mellified](https://playnite.link/forum/thread-337-post-2923.html#pid2923)
 - GoldenWinter By me, a white theme with golden and blue accents
-- Cherry By hunt363
+- Cherry [By hunt363](https://playnite.link/forum/thread-337-post-4104.html#pid4104)
 
 ### Custom options
-eMidedNite allows you to customize how it looks throuh editing some variables in ThemeModifier EditConstants
+eMidedNite allows you to customize how it looks throuh editing some variables in [ThemeModifier EditConstants](https://github.com/Lacro59/playnite-thememodifier-plugin/wiki/Edit-current-theme-constants)
