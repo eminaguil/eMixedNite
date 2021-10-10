@@ -1,0 +1,172 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    mc:Ignorable="d">    
+
+    <Style TargetType="{x:Type LibraryGridView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type LibraryGridView}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DockPanel Background="{TemplateBinding Background}"
+                                d:DesignWidth="1280" d:DesignHeight="960"
+                                d:DataContext="{x:Static DesignMainViewModel.DesignIntance}">
+                            <GridViewGameOverview x:Name="PART_ControlGameView"
+                                                Width="{Settings GrdiDetailsWitdh}"
+                                                DockPanel.Dock="{Settings GridViewDetailsPosition}" />                   
+                            <Grid DockPanel.Dock="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ExtendedListBox x:Name="PART_ListGames" Padding="5"
+                                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                ScrollViewer.PanningMode="VerticalOnly"
+                                                ItemContainerStyle="{DynamicResource GridViewItemStyle}"
+                                                DockPanel.Dock="Left"
+                                                BorderThickness="0">
+                                    <ExtendedListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <GameListItem Style="{StaticResource GridViewItemTemplate}" />
+                                        </DataTemplate>
+                                    </ExtendedListBox.ItemTemplate>
+                                    <ExtendedListBox.GroupStyle>
+                                        <GroupStyle ContainerStyle="{StaticResource GridViewGroupStyle}"/>
+                                    </ExtendedListBox.GroupStyle>
+                                </ExtendedListBox>
+                                <TextBlock FontSize="{StaticResource FontSizeLarge}" Margin="0,40,0,0"
+                                        Text="{DynamicResource LOCNoItemsFound}" TextWrapping="Wrap"                                      
+                                        TextAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Items.Count, ElementName=PART_ListGames, Mode=OneWay}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" Grid.Row="1">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type CheckBox}">
+                                    <Setter Property="Padding" Value="0" />
+                                    <Setter Property="Margin" Value="15,4,0,4" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border  BorderBrush="Transparent">
+                                                    <Grid>
+                                                        <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="15"
+                                                            VerticalAlignment="Stretch" 
+                                                            Foreground="{DynamicResource ButtonBackgroundBrush}" Name="MainCheckIcon"
+                                                        />
+                                                         <Label Content=""   FontFamily="{StaticResource FontIcoFont}" FontSize="12" 
+                                                            VerticalAlignment="Center" Margin="10,10,0,0" 
+                                                            Foreground="{DynamicResource TextBrushDark}" Name="CheckedIcon"/>
+                                                    </Grid>
+                                                </Border>                                                   
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" TargetName="MainCheckIcon" />
+                                                        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" TargetName="CheckedIcon" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Label Content="" FontFamily="{StaticResource FontIcoFont}"
+                                ToolTip="{DynamicResource LOCZoomLabel}" 
+                                Margin="10,2,4,2" Foreground="{DynamicResource GlyphBrush}"
+                            />
+                            <SliderWithPopup x:Name="PART_SliderZoom" Width="200" />
+                            <CheckBox ToolTip="Library Preview Configs" Name="LbGdQuickConfigsCheck" />
+                            <StackPanel Orientation="Horizontal"
+                                Visibility="{Binding ElementName=LbGdQuickConfigsCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type CheckBox}">
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="Margin" Value="6,2,4,2" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Border  BorderBrush="Transparent">
+                                                        <Grid>
+                                                            <Label Content="{TemplateBinding Tag}" FontFamily="{StaticResource FontIcoFont}" FontSize="15"
+                                                                VerticalAlignment="Stretch" HorizontalAlignment="Center" Cursor="Hand"
+                                                                Foreground="{DynamicResource GlyphBrush}" Name="MainCheckIcon"
+                                                            />
+                                                            <Label Content="" Name="CheckedIcon"
+                                                                FontSize="10" Margin="12,12,0,0"
+                                                                FontFamily="{StaticResource FontIcoFont}"                                                                     
+                                                                Foreground="{DynamicResource TextBrushDark}"
+                                                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                            />
+                                                        </Grid>
+                                                    </Border>                                                   
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Foreground" Value="{DynamicResource HighlightGlyphBrush}" TargetName="MainCheckIcon" />
+                                                            <Setter Property="Foreground" Value="{DynamicResource HighlightGlyphBrush}" TargetName="CheckedIcon" />
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Label Content="" FontFamily="{StaticResource FontIcoFont}"
+                                    ToolTip="Grid view details width" 
+                                    Margin="12,2,4,2" Foreground="{DynamicResource GlyphBrush}"
+                                />
+                                <SliderEx Name="eMixedGrdiDetailsWitdh"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    Width="200" Minimum="200" Maximum="1200"
+                                    Value="{Settings GrdiDetailsWitdh}"
+                                    ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Value}"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"
+                                />
+                                <Label Content="" FontFamily="{StaticResource FontIcoFont}"
+                                    ToolTip="Banner height" 
+                                    Margin="12,2,4,2" Foreground="{DynamicResource GlyphBrush}"
+                                />
+                                <SliderEx Name="eMixedBannerHeight"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    Width="200" Minimum="0" Maximum="100"
+                                    Value="{DynamicResource BannersHeight}"
+                                    ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Value}"
+                                    TickFrequency="1" IsSnapToTickEnabled="True"
+                                />
+                                
+                                <CheckBox ToolTip="Banner Visibility" Name="LbGdBannerCheck" Tag="" 
+                                    IsChecked="{DynamicResource UseItmBanners}"/>
+                                <CheckBox ToolTip="Togggle Image instead of Text in Banner" Name="LbGdImageCheck" Tag=""
+                                    IsChecked="{DynamicResource UseItmImageBanners}" />
+                                <CheckBox ToolTip="Togggle Banner Position" Name="LbGdBannerPosCheck" Tag=""
+                                    IsChecked="{DynamicResource UseItmHorizontalBanner}" />
+                                <CheckBox ToolTip="Use Store Banners instead of Icons" Name="LbGdStoreCheck" Tag=""
+                                    IsChecked="{DynamicResource UseItmStoreBanners}" />
+                                <CheckBox ToolTip="Addiotional information Visible" Name="LbGdInfoCheck" Tag="" 
+                                    IsChecked="{DynamicResource GridInfoVisible}" />
+                            </StackPanel>                       
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

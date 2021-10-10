@@ -1,0 +1,168 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+         
+    <!-- No Categorized -->
+	<sys:Boolean x:Key="GameOverviewFullScroll">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="ThFeaturesAtTop">True</sys:Boolean> <!-- Values: True False  --> 
+    <sys:Double x:Key="DetailsViewLogoMaxWidth">320</sys:Double>
+    <sys:Double x:Key="GridViewLogoMaxWidth">270</sys:Double>
+    <sys:Boolean x:Key="CoverOutlineVisible">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="HLTBLabelsVisible">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="HLTBTogglePanelBar">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="SuccessToggleCompact">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="ScListToggleOrtn">False</sys:Boolean> <!-- Values: True False  -->
+       
+    <!-- Title / Logo -->
+    <sys:Boolean x:Key="TitleLogoVisible">True</sys:Boolean> <!-- Values: True False TODO: restablish  --> 
+    <VerticalAlignment x:Key="TitleVerticalAlignment" >Center</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
+    <HorizontalAlignment x:Key="TitleHorizontalAlignment">Left</HorizontalAlignment> <!-- Values: Left Center Right  -->
+
+    <!-- Game Details -->
+    <sys:Boolean x:Key="GameDetailsVisible">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="GameDetailsColumnToggle">False</sys:Boolean> <!-- Values: True False  -->
+    <HorizontalAlignment x:Key="GameDetailsLabelHorizontalAlignment">Left</HorizontalAlignment> <!-- Values: Left Center Right  -->
+    <HorizontalAlignment x:Key="GameDetailsValueHorizontalAlignment">Left</HorizontalAlignment> <!-- Values: Left Center Right  -->
+
+    <!-- Panels -->
+    <sys:Boolean x:Key="PanelSeparatorVisible">True</sys:Boolean> <!-- Values: True False  -->
+	<sys:Boolean x:Key="ImageInitialyExpanded">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="SuccessInitialyExpanded">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="SreenshotsShowOnlyList">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Double x:Key="DetailPanelOpacity">0.67</sys:Double> 
+    <sys:Double x:Key="DetailPanelLessOpacity">0.8</sys:Double>
+    <sys:Double x:Key="DetailsLeftColumnMinWidth">100</sys:Double>
+    <sys:Double x:Key="GridLeftColumnMinWidth">100</sys:Double>
+
+    <!-- Details Lits Items-->
+    <sys:Boolean x:Key="DeatailListMultiLineName">True</sys:Boolean> <!-- Values: True False  -->    
+    <sys:Boolean x:Key="DeatailListInfoVisible">True</sys:Boolean> <!-- Values: True False  -->    
+    <sys:Boolean x:Key="DeatailListFullInfo">True</sys:Boolean> <!-- Values: True False  --> 
+
+
+    <!-- Grid Items -->
+    <SolidColorBrush x:Key="GameGridItemtBrush" Color="#60202020" /> 
+    <sys:Boolean x:Key="GridInfoVisible">True</sys:Boolean> <!-- Values: True False  -->
+    <VerticalAlignment x:Key="GridControlVerticalAlignment" >Bottom</VerticalAlignment> <!-- Values: Top Center Bottom  -->
+    <sys:Boolean x:Key="UseItmBanners">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Double x:Key="BannersHeight">30</sys:Double>
+    <sys:Boolean x:Key="UseItmHorizontalBanner">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="UseItmImageBanners">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="UseItmStoreBanners">True</sys:Boolean> <!-- Values: True False  -->    
+    <VerticalAlignment x:Key="TextBannerVerticalAlignment" >Center</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
+    <HorizontalAlignment x:Key="TextBannerHorizontalAlignment">Center</HorizontalAlignment> <!-- Values: Left Center Right  -->
+       
+    <!-- Description -->
+    <Color x:Key="HtmlTextColor">#C8D0DC</Color> 
+    <Color x:Key="HtmlLinkColor">#66c0f4</Color>
+
+    <!-- darklinkpower ExtraMetadata plugin -->
+    <sys:Boolean x:Key="UseAbsoluteExtraMetadataPath">false</sys:Boolean>
+    <sys:String x:Key="ExtraMetadataPath">..\..\..\..</sys:String>
+
+    <!-- Compleation Status Icons-->
+    <sys:String x:Key="CustomStatusIcon"></sys:String>
+    <sys:String x:Key="NoneStatusIcon"></sys:String>
+    <sys:String x:Key="NotPlayedStatusIcon"></sys:String>
+	<sys:String x:Key="PlayingStatusIcon"></sys:String>
+	<sys:String x:Key="PlayedStatusIcon"></sys:String>
+	<sys:String x:Key="CompletedStatusIcon"></sys:String>
+	<sys:String x:Key="BeatenStatusIcon"></sys:String>
+	<sys:String x:Key="AbandonedStatusIcon"></sys:String>
+	<sys:String x:Key="OnHoldStatusIcon"></sys:String>
+	<sys:String x:Key="PlanToPlayStatusIcon"></sys:String>
+
+    <!-- Compleation Status Brushes-->
+    <SolidColorBrush x:Key="NoneStatusBrush" Color="#404040" />
+    <SolidColorBrush x:Key="NotPlayedStatusBrush" Color="#808080" />
+    <SolidColorBrush x:Key="PlayingStatusBrush" Color="#6CC417" />
+    <SolidColorBrush x:Key="PlayedStatusBrush" Color="#307D7E" />
+    <SolidColorBrush x:Key="CompletedStatusBrush" Color="#FFD700" />
+    <SolidColorBrush x:Key="BeatenStatusBrush" Color="#00ff60" />
+    <SolidColorBrush x:Key="AbandonedStatusBrush" Color="#808080" />
+    <SolidColorBrush x:Key="OnHoldStatusBrush" Color="#C0C0C0" />
+    <SolidColorBrush x:Key="PlanToPlayStatusBrush" Color="#00BFFF" /> 
+    
+    <sys:Int32 x:Key="DuplicateHider_MaxNumberOfIcons">4</sys:Int32>
+    <sys:Int32 x:Key="DuplicateHider_MaxNumberOfIcons1">8</sys:Int32>
+    <sys:Int32 x:Key="DuplicateHider_MaxNumberOfIcons2">8</sys:Int32>
+    
+    <sys:Double x:Key="FontSizeSmall">12</sys:Double>
+    <sys:Double x:Key="FontSize">14</sys:Double>
+    <sys:Double x:Key="FontSizeLarge">15</sys:Double>
+    <sys:Double x:Key="FontSizeLarger">20</sys:Double>
+    <sys:Double x:Key="FontSizeLargest">29</sys:Double>
+    <FontFamily x:Key="FontFamily">Trebuchet MS</FontFamily>
+    <FontFamily x:Key="MonospaceFontFamily">Consolas</FontFamily>
+    <Thickness x:Key="PopupBorderThickness">0</Thickness>
+    <Thickness x:Key="ControlBorderThickness">0</Thickness>
+    <sys:Double x:Key="EllipseBorderThickness">0.2</sys:Double>
+    <CornerRadius x:Key="ControlCornerRadius">5</CornerRadius>
+    <Thickness x:Key="SidebarItemPadding">8</Thickness>
+    <Thickness x:Key="InputBorderThickness">0,0,0,2</Thickness>
+    <CornerRadius x:Key="GridItemCornerRadius">20</CornerRadius>
+
+    <Color x:Key="BlackColor">#444444</Color>
+    <Color x:Key="WhiteColor">#FFFFFFFF</Color>
+    <Color x:Key="TextColor">#ffe</Color>
+    <Color x:Key="TextColorAlt">#ffc</Color>
+    <Color x:Key="TextColorDarker">#707070</Color>
+    <Color x:Key="TextColorDark">#a0a0a0</Color>
+    <Color x:Key="MainColor">#545B67</Color>
+    <Color x:Key="MainColorDark">#700010</Color>
+    <Color x:Key="HoverColor">#9a4545</Color>
+    <Color x:Key="GlyphColor">#F4A460</Color>
+    <Color x:Key="HighlightGlyphColor">#c08080</Color>
+    <Color x:Key="PopupBackgroundColor">#171e26</Color>
+    <Color x:Key="PopupBorderColor">#FFAF612E</Color>
+    <Color x:Key="BackgroundToneColor">#2C3A67</Color>
+    <Color x:Key="GridItemBackgroundColor">#609a4545</Color>
+    <Color x:Key="PanelSeparatorColor">#00000000</Color>
+    <Color x:Key="TransparentColor">#00000000</Color>
+
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="TextBrush" Color="{DynamicResource TextColor}" />
+    <SolidColorBrush x:Key="TextBrushAlt" Color="{DynamicResource TextColorAlt}" />
+    <SolidColorBrush x:Key="TextBrushDarker" Color="{DynamicResource TextColorDarker}" />
+    <SolidColorBrush x:Key="TextBrushDark" Color="{DynamicResource TextColorDark}" />
+    <SolidColorBrush x:Key="NormalBrush" Color="{DynamicResource MainColor}" />
+    <SolidColorBrush x:Key="NormalBrushDark" Color="{DynamicResource MainColorDark}" />
+    <SolidColorBrush x:Key="NormalBorderBrush" Color="#4C545D" />
+    <SolidColorBrush x:Key="HoverBrush" Color="{DynamicResource HoverColor}" />
+    
+    <LinearGradientBrush x:Key="GlyphBrush"  StartPoint="0.5,0" EndPoint="0.5,1" >
+        <GradientStop Color="#F4A460" Offset="0"/>
+        <GradientStop Color="#D2691E" Offset="0.75"/>
+    </LinearGradientBrush>
+    
+	<SolidColorBrush x:Key="HighlightGlyphBrush" Color="{DynamicResource HighlightGlyphColor}" />
+    <SolidColorBrush x:Key="PopupBorderBrush" Color="{DynamicResource PopupBorderColor}" />
+
+    <LinearGradientBrush x:Key="TooltipBackgroundBrush"  StartPoint="0.5,0" EndPoint="1,1" >
+        <GradientStop Color="#A0522D" Offset="0"/>
+        <GradientStop Color="#800000" Offset="0.7"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#9a4545" />
+    <SolidColorBrush x:Key="GridItemBackgroundBrush" Color="{DynamicResource GridItemBackgroundColor}" />
+    <SolidColorBrush x:Key="PanelSeparatorBrush" Color="{DynamicResource PanelSeparatorColor}" />
+    <SolidColorBrush x:Key="PopupBackgroundBrush" Color="#383C44" />
+
+    
+    <SolidColorBrush x:Key="PositiveRatingBrush" Color="#FFFF90" />
+    <SolidColorBrush x:Key="NegativeRatingBrush" Color="#D88C8C" />
+    <SolidColorBrush x:Key="MixedRatingBrush" Color="#478FaB" />
+
+    <SolidColorBrush x:Key="WarningBrush" Color="#ff6b6b" />
+
+    <LinearGradientBrush x:Key="ExpanderBackgroundBrush" StartPoint="-0.1,0.5" EndPoint="1.2,1" >
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="0.25"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="WindowBackgourndBrush" StartPoint="0.6,0.8" EndPoint="1,1" >
+        <GradientStop Color="#303030" Offset="0"/>
+        <GradientStop Color="#800000" Offset="1.5"/>
+    </LinearGradientBrush>
+
+</ResourceDictionary>

@@ -1,0 +1,176 @@
+ChangeLog: eMixedNite
+Version: 2.11
+    - Added support to Lacro59 Plugin Buttons
+Version: 2.10
+    - Fixed controls to more standard coloring. 
+    - Fixed in details panel, some of the values not showing.
+    - Fixed theme modifier, edit constants not showing.
+    - Added support to Lacro59 LibraryManagement features.
+    - Added toggle between Success compact list and (un)locked list
+    - Changes to Achievements panel.
+        - Changed List and timeline as tabbed items 
+        - Added support to user stats as tabbed item
+        - New. When expanded, the achievements compact list is hidden for additional space.
+Version: 2.00
+    - Planite Beta 9 Update
+Version: 1.98
+    - How long to beat can be switched as panel under achivement and images
+Version: 1.97
+    - Fixed logo/title aligment  doesn't work in detaill view
+    - Fixed control style disparity in filter panel
+    - Changed some banners, old ones are there if you want.
+Version: 1.95
+    - Added more optimization to ThemeModifier Constants
+    - Added banner in detail cover or, plataform information in the panels. Full customizable.
+    - Added in Grid View toggle the outline for the covers
+    - Rename Quick Configs to Preview Configs, because they are preview ;-)
+Version: 1.87
+    - Fixed expannders not showing when the Panel Opacity is cero
+    - Fixex constants display en ThemeModifier, the last ones where overlaped
+Version: 1.85
+    - Added toggle between one and two columns in details through ThemeModifier
+    - Fixed alignments of values in details panel. The whole details are centered, the labels and values conserve their configured alignment.
+    - Added left column panels minimal width
+Version: 1.83
+    - Fixed problems for changing type of variables, they have been renamed
+    - Fixed some more alignment  in some components
+    - Fixed text banners in grid items, they are back. 
+    - Added alignment to text banners in grid items, they can be changed in ThemeModifier
+Version: 1.80
+    - Fixed various items alignments and spacing
+    - Added HLTB Icon / Labels Visibility, can be customized in ThemeModifier 
+    - Added alignment  option to Game details labels and values, can be customized in ThemeModifier
+    - Added panels title line separator, it can be changed with ThemeModifier
+    - The outline visibility around the game cover in detail view, now it can be changed with ThemeModifier
+    - Added QuickSettings, it's a preview for checking some eMixedNite options, this can be changed in ThemeModifier
+        - Logo / Title Visibility
+        - Toggle between full / partial scrollbar
+        - Toggle the ThemeModifier features position
+        - Outline visibility around the game cover in detail view
+        - HLTB Icon / Labels Visibility
+        - Expanders visibility (it can not be changed in ThemeModifier, because it triggers a bug)
+        - Details Panel Visibility
+        - Panels title separator visibility
+    - Added config options at bottom for change some list / grid opttions.  After close, it resets, only preview for checking the values so, it can be changed in preferences
+        - Change icon heigth at detail view
+        - Change list width at detail view
+        - Change banner heigth at grid view
+        - Change details width at detail view
+        - and more...
+Version: 1.62
+    - Added information to details list items, it can be configured with ThemeModifier
+        - Enable or disable to show the info.
+        - The information can be full with status icon, favorite icon last played and time played.
+        - The information can be only icons with status icon and favorite icon.
+    - Added Sreenshots panel shows only list configurable in ThemeModifier
+    - Status icons and it's colors are now in constants if anyone whants more customization without looking into the code of the items templates
+Version: 1.57
+    - Added custom logos from darklinkpower Extra Metadata Tools at https://playnite.link/forum/thread-575.html. If there is no logo or no plugin, the game name is show.
+    - Added custom logo max width to ThemeModifier, the heigth is auto adjusted. 
+    - Better ThemeModifier Variables, cleaned, grouped and with better description
+    - Added some little code optimizations for banners
+Version: 1.52
+    - Added initial state configurable for expandable images and achievemets panels. Look in ThemeModifier for All Achievements panel is initialy expanded and Screenshots panel is initialy expanded
+    - Modifyied style for for expandable images and achievemets panels to match the others.
+    - Added rounded corner for game covers.
+    - Added zoom animation on mouse hover in cover at Grid View.
+    - Added multiline to Game Names.
+Version: 1.47
+    - Moved the panel with all achievements under compact achievements, now is expandable.
+    - Removed labels in compact achievements, now the count is showed in all achievements
+    - Added support for Lacro59 ScreenshotsVisualizer, there's a expandable panel with the image list.
+Version: 1.44
+    - Added constants to customize the features from ThemeModifier in grid view and detail view, it can be at top if true or in the panel if false.
+    - More customization for ThemeModifier features. Added text to the icons when there's three or less feature when at top, in the panel it's shown if there's one.
+    - Restored small height of how long to beat progress bar.
+    - Replaced zoom label for icon with tooltip
+Version: 1.40
+    - Added features in grid view and detail view
+    - Change game activity graphic panel location. Its back in 1.40 :-)
+Version: 1.33
+    - Fixed Twitch banner
+    - Added Oculus banner
+Version: 1.32
+    - Fixed SuccesStory Locked / Unlocked achivements in GridView
+Version: 1.31
+    - Fixed Bethesda and Xbox banners
+Version: 1.30
+    - eMixedNite Lite, a new lightweight version without banners or icons per source and no custom integration. Ideal for customizing the plugins from the settings.
+    - Added more rounded corners to controls, I hope it can be customized in the future from ThemeModifier.
+    - Added a little icon for the links.
+    - Added more banners, Bethesda, Indiegala, Rockstar Games, Ubisoft Connect; and fixed, (maybe :-| ) Xbox / Microsoft Store. Can somebody test it??
+    - Added style to description if you use html. I used to copy the style to each game description but now, it can be included in the themes. ;-)
+        - Added links color to the headers and bold, this color can be changed in ThemeModifier
+        - Added oblique format to headers,
+        - Added indent and justify to paragraph, 
+        - Images are resized to almost the description width and, tried to center throug margins,
+        - Adde little space for the list,
+        - Added a little margin to the description body,
+Version: 1.21
+    - Fix horizontal banner misplaced with long games name visibles
+Version: 1.20
+    - Changed background in grid view items, deatil list items, filters and explorer. Now it's transparent and looking at the blured selected item background art. If you want the older style change the ControlBrush with ThemeModifier.
+    - Rounded corners for panels in grid view an deatil view game overview.
+    - Added full scrolls in games overview. This are disabled by default, it can be enabled in constants, GameOverviewFullScroll and GameOverviewFullScroll
+    - Various small fixes.
+Version: 1.15
+    - More banners/sources icons: Itch.io, Humble, Amazon, Xbox, PlayStation and twicth
+    - More color correction for better compatibility with ThemeModifier
+    - Change main menu icon with font, now it takes the color of GlypBrush
+Version: 1.10
+    - Added banner to source in grid view, if don't like it, you can hide it in constants, and use the pc platform banner with the source library icon
+    - Addded detaills visibility in constants, now you can hide all the panel, it's items and title.
+    - Added new Notes field
+    - Added custom filter visibility
+    - Better integration with Lacro59 plugings, you can config at settings what items show in the games overview and their titles are show or not
+Version: 1.00
+    - Updated and repacked for Playnite 8.0
+    - Added variable to constants for use platform icon in banners 
+Version: 0.70
+    - Added banners in grid view. It can be configured in constants if you want horizontally or vertically, if you don't like them, hide both. 
+    - The banner images can be assigned to the actual platform in in Library Manager. If there's no image, the library name will be displayed. Inside  the theme in images, you can found what I am using.
+    - Added source/library icons in the banners. For now I only got steam, gog. epic, origin, uplay and battle.net
+Version: 0.65
+    - Information in grid items using localized tooltips: last played, time played, completion status, and favorite. If you don't like it, you can hide it in constants.
+    - In game details, in last played added last time session from Lacro59 GameActivity
+    - Changed colors and fixed some other so it can be customized with Lacro59 ThemeModifier
+Version: 0.63
+    - Better compatibility with ThemeModifier. The icons colors in the views can be changed with the GliphBrush, for selected items in Detail View you can change it with NormalBrushDark.
+    - The darkened effect in the grid it's more subtle. If you don't like it, now you can change it in the constants.
+Version: 0.62
+    - Fixed "Darken uninstalled games"
+    - Changed platform/library display
+    - Added favorite indicator in grid view items
+    - Now when a element is hidden -platform, library, last / time played, status -, it's icon is hidden too.
+    - Moved HowLongToBeat in grid view for better spacing and looks ;-) This is how I wanted the first time I found it.
+Version: 0.61
+    - Fixed this, now its working. The game title can be hide from the constants file          
+Version: 0.60
+    - Fixed achievements title, misspelled
+    - More custom integration with SuccesStory, integration with compact achievements.
+    - Better color customization through ThemeModifier,
+    - The game title can be hide / positioned from the constants file.
+Version: 0.53
+    - Fixed notifications not showing / crashing
+    - Added more custom integration to HLTB, a new panel at the end of the details.
+    - Added icons to the titles in the panels.
+Version: 0.50
+    - Custom integration to SuccesStory, The totals and the icon it's not showed if the game does not have achievements. 
+    - The list of achivements now it has its own panel after description, 
+    - The achievements timeline shows after game details.
+    - Custom integration to GameActivity, the las session log show in its own panel before description. If there isn't, it doesn't show.
+    - Added custom space height to the grid panel view, now its configurable in the detail section.
+Version: 0.36
+    - Fixed the error when installed "End of Central Directory record could not be found"
+    - Added background ribbon to the icons in the grid items.
+Version: 0.3
+    - Change mouse over in grid items, now it lights the images instead of darkened.
+    - Replaced the button images with the Playnite icon fonts, now the the theme file is smaller.
+    - Recolored and resized various buttons, use of color variables for better compatibility with the plugins, but always trying to maintain my theme look.
+Version: 0.2
+    - Added integration to HowLongToBeat plugin by Lacro59
+    - Recolored toolbar icons, grid item selection, detail list item selection.
+    - Added format to groups, in list and detail view
+Version: 0.1
+    - Initial release
+    - Added integration to SuccesStory plugin by Lacro59

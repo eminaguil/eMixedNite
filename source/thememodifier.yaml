@@ -1,0 +1,50 @@
+Constants:
+  - "General"
+  - GameOverviewFullScroll: Enable Game Overview Full Scroll
+  - ThFeaturesAtTop: ThemeModifier Features at top
+  - DetailsViewLogoMaxWidth(56,400): Details View Logo Max Width
+  - GridViewLogoMaxWidth(56,500): Grid View Logo Max Width
+  - HLTBLabelsVisible: HLTB Icon / Labels Visible
+  - HLTBTogglePanelBar: HLTB toggle between Panel / Bar
+  - SuccessToggleCompact: Achievements toggle  Compact / (Un)Locked Lists
+  - "Title / Logo"
+  - TitleLogoVisible: Grid Title/Logo Visibility
+  - TitleVerticalAlignment: Grid Title/Logo Vertical Alignment
+  - TitleHorizontalAlignment: Grid Title/Logo Horizontal Alignment
+  - ScListToggleOrtn: ScreenshotViewer toggle Image List Orientation
+  - "Banners"
+  - UseItmBanners: Use banners in the cover items
+  - CoverOutlineVisible: Game cover outline visible
+  - BannersHeight(16,100): Banners height
+  - UseItmHorizontalBanner: Use horizontal banner instead of vertical
+  - UseItmImageBanners: Use images instead text in banner
+  - UseItmStoreBanners: Use Store Banners instead of icons
+  - TextBannerVerticalAlignment: Text Banner Vertical Alignment
+  - TextBannerHorizontalAlignment: Text Banner Horizontal Alignment
+  - "Details panel"
+  - GameDetailsVisible: Details panel visibility
+  - GameDetailsColumnToggle: Toggle one colummn instead of two
+  - GameDetailsLabelHorizontalAlignment: Labels horizontal alignment
+  - GameDetailsValueHorizontalAlignment: Values horizontal alignment
+  - "Panels"
+  - PanelSeparatorVisible: Title line separator visible
+  - SuccessInitialyExpanded: All Achievements panel is initialy expanded
+  - ImageInitialyExpanded: Screenshots panel is initialy expanded
+  - SreenshotsShowOnlyList: Sreenshots shows only list, no preview
+  - DetailPanelOpacity(0.0,0.9): Panels opacity
+  - DetailPanelLessOpacity(0.0,0.9): Links panel opacity
+  - DetailsLeftColumnMinWidth(100,500): Details View left column min width
+  - GridLeftColumnMinWidth(100,500): Grid View left column min width
+  - HtmlTextColor: Game Description HTML Text Color
+  - HtmlLinkColor: Game Description HTML Links Color
+  - "Deatail List Items"
+  - DeatailListMultiLineName: Multiline name instead single line
+  - DeatailListInfoVisible: Information visible  
+  - DeatailListFullInfo: Full info instead of single status icon
+  - "Grid Items"
+  - GameGridItemtBrush: Darkened effect for Grid View Items
+  - GridInfoVisible: Item information visible
+  - GridControlVerticalAlignment: Controls Vertical Alignment
+  - "Extra Metadata"
+  - UseAbsoluteExtraMetadataPath: Use Absolute Extra Metadata Path
+  - ExtraMetadataPath: Extra Metadata Path
