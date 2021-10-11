@@ -1,0 +1,17 @@
+AddonId: eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e
+Packages:
+  - Version: 2.11
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-10-10
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.11/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_11.pthm
+    Changelog:
+      - Added support to Lacro59 Plugin Buttons
+      - Fixed controls to more standard coloring. 
+      - Fixed in details panel, some of the values not showing.
+      - Fixed theme modifier, edit constants not showing.
+      - Added support to Lacro59 LibraryManagement features.
+      - Added toggle between Success compact list and (un)locked list
+      - Changes to Achievements panel.
+          - Changed List and timeline as tabbed items 
+          - Added support to user stats as tabbed item
+          - New. When expanded, the achievements compact list is hidden for additional space.
