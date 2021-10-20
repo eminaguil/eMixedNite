@@ -1311,7 +1311,7 @@
 																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
 																							<Setter Property="Visibility" Value="Collapsed" />
 																						</DataTrigger>
-																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationUserStats}" Value="False">
+																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationChart}" Value="False">
 																							<Setter Property="Visibility" Value="Collapsed" />
 																						</DataTrigger>
 																					</Style.Triggers>
