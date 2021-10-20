@@ -150,15 +150,23 @@
                                                     Name="GameControls"  Visibility="Collapsed">
                                                 <Grid>			
                                                     <Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelLessOpacity}" />
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Button Name="PART_ButtonPlay" Style="{StaticResource SimpleButton}"
-                                                                Margin="17,1,3,2" VerticalAlignment="Center" Cursor="Hand"
-                                                                ToolTip="{DynamicResource LOCPlayAction}"  
-                                                                Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="14" />
-                                                        <Button Name="PART_ButtonInfo" Style="{StaticResource SimpleButton}"
-                                                                Margin="3,4,17,2" VerticalAlignment="Center" Cursor="Hand" 
-                                                                ToolTip="{DynamicResource LOCSettingsGameDetailsLabel}"  
-                                                                Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="16" />
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Button Name="PART_ButtonPlay" Style="{StaticResource SimpleButton}"
+                                                                    Margin="17,1,3,2" VerticalAlignment="Center" Cursor="Hand"
+                                                                    ToolTip="{DynamicResource LOCPlayAction}"  
+                                                                    Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="14" />
+                                                            <Button Name="PART_ButtonInfo" Style="{StaticResource SimpleButton}"
+                                                                    Margin="3,4,17,2" VerticalAlignment="Center" Cursor="Hand" 
+                                                                    ToolTip="{DynamicResource LOCSettingsGameDetailsLabel}"  
+                                                                    Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="16" />
+                                                        </StackPanel>
+                                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1"
+                                                            Tag="{DynamicResource DhShowInGridList}"
+                                                            Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                        >
+                                                            <ContentControl x:Name="DuplicateHider_SourceSelector1" RenderOptions.BitmapScalingMode="Fant" Visibility="Visible" MaxHeight="15"/>
+                                                        </Grid>
                                                     </StackPanel>
                                                 </Grid> 
                                             </Viewbox>
@@ -170,44 +178,47 @@
                                                 Name="GameFavoriteCover" ToolTip="{DynamicResource LOCGameFavoriteTitle}"
                                                 Visibility="Collapsed" Foreground="{DynamicResource PositiveRatingBrush}"/>
                                         </Grid>
-                                        <TextBlock Text="{Binding DisplayName}"
-                                            Style="{DynamicResource BaseTextBlockStyle}"                                                                   
-                                            TextAlignment="Center" TextTrimming="CharacterEllipsis"
-                                            VerticalAlignment="Center"
-                                            Padding="2,5,2,5" Grid.Row="1" Grid.Column="0"
-                                            Width="{Settings GridItemWidth}" 
-                                            Visibility="{Settings ShowNamesUnderCovers}" 
-                                        />
                                     </Grid>
-                                </StackPanel>                                        
-                                    <Grid Grid.Row="2" Grid.Column="0" Height="34" Background="{DynamicResource WindowBackgourndBrush}"
-                                        Visibility="{Binding ElementName=LbGdInfoCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="12" Margin="15,15,0,0"
-                                            Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
-                                        <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="13" Margin="4,0,8,0"
-                                            Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
-                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" >
-                                            <TextBlock ToolTip="{DynamicResource LOCLastPlayed}"
-                                                Text="{Binding Path=LastActivity, Converter={StaticResource DateTimeToLastPlayedConverter}}"
-                                                TextBlock.Foreground="{DynamicResource TextBrush}" Margin="4,0,4,0"
-                                                FontSize="11"/>
-                                            <TextBlock Text="{Binding Playtime, Converter={StaticResource PlayTimeToStringConverter}}"
-                                                ToolTip="{DynamicResource LOCTimePlayed}" Margin="15,2,4,0"
-                                                TextBlock.Foreground="{DynamicResource TextBrush}" FontSize="11"/>
-                                        </StackPanel>
-                                        <Label FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="4,0,4,0"
-                                            VerticalAlignment="Center" Name="CompletionStatuIcon" ToolTip="{Binding CompletionStatus.Name}"
-                                            Foreground="Silver" Grid.Column="2"/>
-                                        <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="0,0,4,0"
-                                            VerticalAlignment="Center"  Name="GameFavorite" ToolTip="{DynamicResource LOCGameFavoriteTitle}"
-                                            Visibility="Collapsed" Foreground="{DynamicResource PositiveRatingBrush}" Grid.Column="3"/>
-                                    </Grid>
+                                </StackPanel>                                                                        
+                                <StackPanel Background="{DynamicResource WindowBackgourndBrush}" Visibility="{Settings ShowNamesUnderCovers}" >
+                                    <TextBlock Text="{Binding DisplayName}"
+                                        ToolTip="{Binding DisplayName}"
+                                        Style="{DynamicResource BaseTextBlockStyle}"                                                                   
+                                        TextAlignment="Center" TextTrimming="CharacterEllipsis"
+                                        Foreground="{DynamicResource GlyphBrush}"
+                                        VerticalAlignment="Center"
+                                        Padding="2,5,2,5" 
+                                        Width="{Settings GridItemWidth}" 
+                                    />
+                                </StackPanel>
+                                <Grid Grid.Row="2" Grid.Column="0" Height="34" Background="{DynamicResource WindowBackgourndBrush}"
+                                    Visibility="{Binding ElementName=LbGdInfoCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="12" Margin="15,15,0,0"
+                                        Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
+                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="13" Margin="4,0,8,0"
+                                        Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                                        <TextBlock ToolTip="{DynamicResource LOCLastPlayed}"
+                                            Text="{Binding Path=LastActivity, Converter={StaticResource DateTimeToLastPlayedConverter}}"
+                                            TextBlock.Foreground="{DynamicResource TextBrush}" Margin="4,0,4,0"
+                                            FontSize="11"/>
+                                        <TextBlock Text="{Binding Playtime, Converter={StaticResource PlayTimeToStringConverter}}"
+                                            ToolTip="{DynamicResource LOCTimePlayed}" Margin="15,2,4,0"
+                                            TextBlock.Foreground="{DynamicResource TextBrush}" FontSize="11"/>
+                                    </StackPanel>
+                                    <Label FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="4,0,4,0"
+                                        VerticalAlignment="Center" Name="CompletionStatuIcon" ToolTip="{Binding CompletionStatus.Name}"
+                                        Foreground="Silver" Grid.Column="2"/>
+                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="0,0,4,0"
+                                        VerticalAlignment="Center"  Name="GameFavorite" ToolTip="{DynamicResource LOCGameFavoriteTitle}"
+                                        Visibility="Collapsed" Foreground="{DynamicResource PositiveRatingBrush}" Grid.Column="3"/>
+                                </Grid>
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -287,6 +298,58 @@
                             <Setter Property="Visibility" Value="Visible" TargetName="GameControls"/>
                             <Setter Property="BorderBrush" Value="{DynamicResource HoverBrush}" TargetName="eMixedRoundBorder"/>                            
                         </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="DuplicateHider_IconContentControlStyle1"
+        BasedOn="{StaticResource {x:Type ContentControl}}"
+        TargetType="ContentControl">
+        <Style.Resources>
+            <DropShadowEffect
+                x:Key="glowEffect"
+                BlurRadius="8"
+                Opacity="1"
+                RenderingBias="Quality"
+                ShadowDepth="0"
+                Color="{DynamicResource GlyphColor}" />
+        </Style.Resources>
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{x:Null}" />
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ToolTip>
+                            <TextBlock Text="{Binding DisplayString}"/>
+                        </Grid.ToolTip>
+                        <Border x:Name="IconBackground" CornerRadius="8" Background="{DynamicResource WindowBackgourndBrushHighlightHover}" Opacity="1" Visibility="Hidden">
+                        </Border>
+                        <Image Source="{Binding Icon}" RenderOptions.BitmapScalingMode="Fant" Margin="3" 
+                               Opacity="{Binding Game.IsInstalled, Converter={StaticResource OpacityBoolConverter}}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Visibility" Value="Visible" TargetName="IconBackground"/>
+                            <Setter Property="Border.Background" Value="{DynamicResource WindowBackgourndBrushBright}" TargetName="IconBackground"/>
+                            <Setter Property="Border.Opacity" Value="1" TargetName="IconBackground"/>
+                            <Setter Property="Effect" Value="{StaticResource glowEffect}" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                            <Setter Property="Border.Visibility" Value="Visible" TargetName="IconBackground"/>
+                            <Setter Property="Border.Background" Value="{DynamicResource WindowBackgourndBrushHighlight}" TargetName="IconBackground"/>
+                            <Setter Property="Border.Opacity" Value="1" TargetName="IconBackground"/>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

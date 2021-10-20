@@ -2,7 +2,9 @@ ThemeApiVersion: 2.0.0
 Id: eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e
 Name: eMixedNite
 Author: eminaguil
-Version: 2.11
+Version: 2.20
 Links:
   - Name: Theme forum
     Url: https://playnite.link/forum/thread-337.html
+  - Name: GitHub
+    Url: https://github.com/eminaguil/eMixedNite

@@ -15,3 +15,15 @@ Packages:
           - Changed List and timeline as tabbed items 
           - Added support to user stats as tabbed item
           - New. When expanded, the achievements compact list is hidden for additional space.
+  - Version: 2.20
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-10-19
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.20/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_20.pthm
+    Changelog:
+      - Added support to felixkmh DuplicateHider
+          - Platform selection in list and views
+          - Allow to select in wich list or view it's visible with ThemeModifier
+      - Changed expander and panels with plugin data
+          - One only extender with all the panels as tabs
+          - Hides achievements compact list and HLTB bar when extended
+      - Fixed game title overlaying the cover in grid view instead of having its own area.

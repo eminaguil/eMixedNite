@@ -1,4 +1,12 @@
 ChangeLog: eMixedNite
+Version: 2.20
+    - Added support to felixkmh DuplicateHider
+        - Platform selection in list and views
+        - Allow to select in wich list or view it's visible with ThemeModifier
+    - Changed expander and panels with plugin data
+        - One only extender with all the panels as tabs
+        - Hides achievements compact list and HLTB bar when extended
+    - Fixed game title overlaying the cover in grid view instead of having its own area.
 Version: 2.11
     - Added support to Lacro59 Plugin Buttons
 Version: 2.10

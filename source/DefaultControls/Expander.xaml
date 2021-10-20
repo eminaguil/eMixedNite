@@ -48,48 +48,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ExpanderDownHeaderStyle2" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="" x:Name="CollapsedIcon" 
-                                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       Style="{DynamicResource BaseTextBlockStyle}"
-                                       Foreground="{DynamicResource GlyphBrush}" FontSize="18" MinWidth="20" Margin="5,0,5,0"
-                                       Grid.Column="0" TextAlignment="Center" />
-                            <TextBlock Text="" x:Name="ExpandedIcon" 
-                                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       Style="{DynamicResource BaseTextBlockStyle}"
-                                       Foreground="{DynamicResource GlyphBrush}" FontSize="18" MinWidth="20" Margin="5,0,5,0"
-                                       Visibility="Collapsed"
-                                       Grid.Column="0" TextAlignment="Center"/>
-                            <ContentPresenter Grid.Column="1" VerticalAlignment="Center"
-                                              SnapsToDevicePixels="True" HorizontalAlignment="Stretch" RecognizesAccessKey="True"  />
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Visibility" TargetName="ExpandedIcon" Value="Visible" />
-                            <Setter Property="Visibility" TargetName="CollapsedIcon" Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="0.75" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="{x:Type Expander}">
         <Setter Property="Background" Value="{DynamicResource ExpanderBackgroundBrush}" />
         <Setter Property="BorderThickness" Value="0" />

@@ -45,6 +45,11 @@ Constants:
   - GameGridItemtBrush: Darkened effect for Grid View Items
   - GridInfoVisible: Item information visible
   - GridControlVerticalAlignment: Controls Vertical Alignment
+  - "Duplicate Hider"
+  - DhShowInDeatilList: Show in Deatil List
+  - DhShowInDeatilView: Show in Deatil View
+  - DhShowInGridList: Show in Grid List
+  - DhShowInGridView: Show in Grid View
   - "Extra Metadata"
   - UseAbsoluteExtraMetadataPath: Use Absolute Extra Metadata Path
   - ExtraMetadataPath: Extra Metadata Path

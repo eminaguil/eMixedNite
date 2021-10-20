@@ -151,9 +151,7 @@
 										<CheckBox ToolTip="Features Toggle Position" Name="GdFeaturesCheck" Tag="" 
 											IsChecked="{DynamicResource ThFeaturesAtTop}"/>
 										<CheckBox ToolTip="HLTB Icon / Labels Visible" Name="GdHLTBCheck" Tag="" 
-											IsChecked="{DynamicResource HLTBLabelsVisible}"/> 
-										<CheckBox ToolTip="HLTB toggle  Panel / Bar" Name="HLTBToggleCheck" Tag="" 
-											IsChecked="{DynamicResource HLTBTogglePanelBar}"/> 
+											IsChecked="{DynamicResource HLTBLabelsVisible}"/>  
 										<CheckBox ToolTip="Achievements toggle  Compact / (Un)Locked Lists" Name="SuccesCompactCheck" Tag="" 
 											IsChecked="{DynamicResource SuccessToggleCompact}"/> 
 										<CheckBox ToolTip="Expanders Visibility" Name="GdExpandersCheck" Tag="" />
@@ -245,8 +243,6 @@
 										Command="{MainViewModel CloseGameSideBarCommand}"
 										Height="17" Width="17" />
 								</StackPanel>
-								
-
 								<DockPanel DockPanel.Dock="Top"  Grid.Row="1" Height="{Settings CalculatedGameDetailsIndentation}"> 								
 									<Grid HorizontalAlignment="{DynamicResource TitleHorizontalAlignment}" 
 										VerticalAlignment="{DynamicResource TitleVerticalAlignment}"
@@ -366,7 +362,8 @@
 																<Button Name="PART_ButtonPlayAction" ToolTip="{DynamicResource LOCPlayAction}"
 																	FontFamily="Corbel" FontSize="24" Width="150" Height="40" Cursor="Hand" />
 																<Button Name="PART_ButtonContextAction"  ToolTip="{DynamicResource LOCInstallGame}" 
-																	FontFamily="Corbel" FontSize="24" Width="150" Height="40" Cursor="Hand" />											
+																	FontFamily="Corbel" FontSize="24" Width="150" Height="40" Cursor="Hand" />
+																																							
 																<Button ToolTip="{DynamicResource LOCMoreAction}" x:Name="PART_ButtonMoreActions"
 																	Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" 
 																	Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="24" >
@@ -374,8 +371,7 @@
 																<Button x:Name="PART_ButtonEditGame" ToolTip="{DynamicResource LOCGameEditWindowTitle}"
 																	Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" 
 																	Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="24" >
-																</Button>
-
+																</Button>																
 																<TextBlock Name="TtGameActivity" Visibility="Collapsed"
 																	Tag="{PluginSettings Plugin=GameActivity, Path=LastDateTimeSession}" >
 																	<TextBlock.Style>
@@ -558,16 +554,20 @@
 																</Grid>
 															</Grid>
 															
-															<!-- <Button Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" 
-																Name="PART_ButtonPlatform" Cursor="Hand" FontSize="18"
-																FontFamily="Corbel" Typography.Capitals="AllSmallCaps"
-																Style="{StaticResource SimpleButton}" Foreground="{DynamicResource TextBrushDark}" />  -->
 															<ItemsControl Name="PART_ItemsPlatforms" Grid.Column="1" Grid.Row="0"  Cursor="Hand" FontSize="18"
 																HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="20"
 																FontFamily="Corbel" Typography.Capitals="AllSmallCaps" Foreground="{DynamicResource TextBrushDark}"/>
-															<Button Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Center"  VerticalAlignment="Center" 
-																Name="PART_ButtonLibrary" Cursor="Hand" 
-																Style="{StaticResource SimpleButton}" Foreground="{DynamicResource TextBrushDark}" />
+															<StackPanel Grid.Column="1" Grid.Row="1"  Height="24">
+																<Grid Tag="{DynamicResource DhShowInGridView}"
+                                                            		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+																	<ContentControl x:Name="DuplicateHider_ContentControl" 
+																		HorizontalAlignment="Center"  VerticalAlignment="Center"
+																		Tag="{DynamicResource DuplicateHider_ContentControlHeader_Style}"
+																	/>
+																</Grid>
+																<Button HorizontalAlignment="Center"  VerticalAlignment="Center" Name="PART_ButtonLibrary" Cursor="Hand" 
+																	Style="{StaticResource SimpleButton}" Foreground="{DynamicResource TextBrushDark}" />
+															</StackPanel>
 															
 															<Grid Name="PART_ElemLastPlayed" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
 																<Grid.RowDefinitions>
@@ -725,7 +725,7 @@
 																<DataTrigger Binding="{Binding ElementName=HtlbHasDataCheck, Path=IsChecked}" Value="False">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>
-																<DataTrigger Binding="{Binding ElementName=HLTBToggleCheck, Path=IsChecked}" Value="True">
+																<DataTrigger Binding="{Binding ElementName=eMnGvPanelsExpander, Path=IsExpanded}" Value="True">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>
 															</Style.Triggers>
@@ -905,7 +905,7 @@
 																<DataTrigger Binding="{Binding ElementName=SuccesCompactCheck, Path=IsChecked}" Value="True">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>
-																<DataTrigger Binding="{Binding ElementName=GvAchiementsExpander, Path=IsExpanded}" Value="True">
+																<DataTrigger Binding="{Binding ElementName=eMnGvPanelsExpander, Path=IsExpanded}" Value="True">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>																	
 															</Style.Triggers>
@@ -949,7 +949,7 @@
 																<DataTrigger Binding="{Binding ElementName=SuccesCompactCheck, Path=IsChecked}" Value="False">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>
-																<DataTrigger Binding="{Binding ElementName=GvAchiementsExpander, Path=IsExpanded}" Value="True">
+																<DataTrigger Binding="{Binding ElementName=eMnGvPanelsExpander, Path=IsExpanded}" Value="True">
 																	<Setter Property="Control.Visibility" Value="Collapsed" />
 																</DataTrigger>	
 															</Style.Triggers>
@@ -1082,11 +1082,11 @@
 														</Style>
 													</StackPanel.Style>
 
-													<Expander Name="GvAchiementsExpander" IsExpanded="{DynamicResource SuccessInitialyExpanded}"  Margin="2,0,2,8">
+													<Expander Name="eMnGvPanelsExpander" IsExpanded="{DynamicResource SuccessInitialyExpanded}"  Margin="2,0,2,8">
 														<Expander.Style>
 															<Style TargetType="{x:Type Expander}"  BasedOn="{StaticResource {x:Type Expander}}">
 																<Setter Property="Visibility" Value="Collapsed" />
-																<Style.Triggers>
+																<Style.Triggers>																
 																	<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationProgressBar}" Value="True">
 																		<Setter Property="Visibility" Value="Visible" />
 																	</DataTrigger>
@@ -1099,225 +1099,362 @@
 																	<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationChart}" Value="True">
 																		<Setter Property="Visibility" Value="Visible" />
 																	</DataTrigger>
-																	<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
-																		<Setter Property="Visibility" Value="Collapsed" />
+																	<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationChartLog}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
 																	</DataTrigger>
+																	<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationChartTime}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
+																	</DataTrigger>
+																	<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowSinglePicture}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
+																	</DataTrigger>
+																	<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPictures}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
+																	</DataTrigger>
+																	<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPicturesVertical}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
+																	</DataTrigger>
+																	<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="True">
+																		<Setter Property="Visibility" Value="Visible" />
+																	</DataTrigger>
+																	<MultiDataTrigger>
+																		<MultiDataTrigger.Conditions>
+																			<Condition Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False" />
+																			<Condition Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="False" />
+																			<Condition Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False" />
+																			<Condition Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="False" />
+																		</MultiDataTrigger.Conditions>
+																		<Setter Property="Visibility" Value="Collapsed"  />
+																	</MultiDataTrigger>
 																</Style.Triggers>
 															</Style>
 														</Expander.Style>													
-														<Expander.Header>															
-															<DockPanel >															
-																<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="24" 
-																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																<TextBlock VerticalAlignment="Center" Text=" ACHIEVEMENTS " Typography.Capitals="AllSmallCaps" Margin="2,-2,0,0"
-																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLargest}"/>	
-																
-																<Label Content="{PluginSettings Plugin=SuccessStory, Path=Unlocked}" Foreground="{DynamicResource PositiveRatingBrush}"
-																	Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSizeLarger}" Margin="2,2,0,0" />
-																<Label Content=" / " Foreground="{DynamicResource TextBrushDark}" 
-																	Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSizeLarger}" Margin="2,2,0,0" />
-																<Label Content="{PluginSettings Plugin=SuccessStory, Path=Total}" Foreground="{DynamicResource TextBrushDark}"
-																	Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSizeLarger}" Margin="2,2,0,0" />
-															</DockPanel>
+														<Expander.Header>
+															<StackPanel Orientation="Horizontal" >
+																<StackPanel Orientation="Horizontal" Margin="0,0,12,0" Tag="{PluginSettings Plugin=SuccessStory, Path=HasData}" 
+                                                            		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
+																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
+																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
+																	<TextBlock VerticalAlignment="Center" Text=" ACHIEVEMENTS " Typography.Capitals="SmallCaps"
+																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>	
+																	
+																	<Label Content="{PluginSettings Plugin=SuccessStory, Path=Unlocked}" Foreground="{DynamicResource PositiveRatingBrush}"
+																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSizeLarge}" VerticalAlignment="Center"/>
+																	<Label Content=" / " Foreground="{DynamicResource TextBrushDark}" VerticalAlignment="Center"
+																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSize}"  />
+																	<Label Content="{PluginSettings Plugin=SuccessStory, Path=Total}" Foreground="{DynamicResource TextBrushDark}"
+																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSize}"  VerticalAlignment="Center" />
+																</StackPanel>
+																<StackPanel Orientation="Horizontal" Margin="0,0,12,0" Tag="{PluginSettings Plugin=GameActivity, Path=HasData}"
+                                                            		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
+																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
+																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
+																	<TextBlock VerticalAlignment="Center" Text=" Game Activity " Typography.Capitals="SmallCaps"
+																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>	
+																	
+																	<Label Content="{PluginSettings Plugin=GameActivity, Path=LastDateTimeSession}" 
+																		Foreground="{DynamicResource TextBrushDark}" 
+																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSize}"  />
+																</StackPanel>
+																<StackPanel Orientation="Horizontal" Tag="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}"
+                                                            		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
+																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
+																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
+																	<TextBlock VerticalAlignment="Center" Text=" ScreenShots " Typography.Capitals="SmallCaps"
+																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>	
+																	
+																	<Label Content="{PluginSettings Plugin=ScreenshotsVisualizer, Path=ListScreenshots.Count}" 
+																		Foreground="{DynamicResource TextBrushDark}" 
+																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSize}"  />
+																</StackPanel>
+																<StackPanel Orientation="Horizontal" Tag="{PluginSettings Plugin=HowLongToBeat, Path=HasData}"
+																	Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
+																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
+																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
+																	<TextBlock VerticalAlignment="Center" Text=" Hltb " Typography.Capitals="SmallCaps"
+																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>
+																</StackPanel>
+															</StackPanel>
 														</Expander.Header>
 														<Expander.Content>												
 															<StackPanel>
 																<Separator Background="{DynamicResource PanelSeparatorBrush}" Margin="8,3,8,3"
 																	Visibility="{Binding ElementName=GdSeparatorCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
-																<ContentControl x:Name="SuccessStory_PluginProgressBar" Margin="12,12,12,8" Height="30" />
-																<Grid Margin="12,0,12,8" Height="240">
+																<!-- <ContentControl x:Name="SuccessStory_PluginProgressBar" Margin="12,12,12,8" Height="30" /> -->
+																<Grid Margin="12,0,12,8" Height="300">
 																	<Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelLessOpacity}" />
-																	<TabControl Height="240">
-																		<TabItem >
-																			<TabItem.Header>
-																				<StackPanel Orientation="Horizontal">																			
-																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
-																					<TextBlock Text=" Detailled List"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
-																				</StackPanel>
-																			</TabItem.Header>
-																			<TabItem.Style>
-																				<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
-																					<Setter Property="Visibility" Value="Visible" />
-																					<Style.Triggers>
-																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationList}" Value="False">
+																	<StackPanel>
+																		<TabControl>
+																			<TabItem >
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" Detailled List"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationList}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<ContentControl x:Name="SuccessStory_PluginList" Margin="8,0,8,8" MinHeight="200" MaxHeight="200" />
+																			</TabItem>
+																			<TabItem>
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" TimeLine"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationUserStats}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<ContentControl x:Name="SuccessStory_PluginChart" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
+																			</TabItem>
+																			<TabItem>
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" User Stats"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationUserStats}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<ContentControl x:Name="SuccessStory_PluginUserStats" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
+																			</TabItem>
+																			<TabItem>
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" Last Session Log"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationChartLog}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<ContentControl x:Name="GameActivity_PluginChartLog" Margin="12" MinHeight="230" MaxHeight="230"/>
+																			</TabItem>
+																			<TabItem>
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" Time Session"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationChartTime}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<ContentControl x:Name="GameActivity_PluginChartTime" Margin="12" MinHeight="230" MaxHeight="230"/>
+																			</TabItem>
+																			<TabItem x:Name="eMnScreenShotsTab">
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" ScreenShots"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Collapsed" />
+																						<Style.Triggers>
+																							<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowSinglePicture}" Value="True">
+																								<Setter Property="Visibility" Value="Visible" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPictures}" Value="True">
+																								<Setter Property="Visibility" Value="Visible" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPicturesVertical}" Value="True">
+																								<Setter Property="Visibility" Value="Visible" />
+																							</DataTrigger>
+																							<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																							</DataTrigger>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>
+																				<Grid>
+																					<Grid>
+																						<Grid.Style>
+																							<Style TargetType="Grid">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																								<Style.Triggers>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowSinglePicture}" Value="True">
+																										<Setter Property="Visibility" Value="Visible" />
+																									</DataTrigger>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPictures}" Value="True">
+																										<Setter Property="Visibility" Value="Collapsed" />
+																									</DataTrigger>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPicturesVertical}" Value="True">
+																										<Setter Property="Visibility" Value="Collapsed" />
+																									</DataTrigger>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False">
+																										<Setter Property="Visibility" Value="Collapsed" />
+																									</DataTrigger>
+																								</Style.Triggers>
+																							</Style>
+																						</Grid.Style>
+																						<ContentControl x:Name="ScreenshotsVisualizer_PluginSinglePicture"  
+																							Margin="12" MinHeight="230" MaxHeight="230" Background="{DynamicResource WindowBackgourndBrush}"/>
+																					</Grid>															
+																					<Grid>
+																						<Grid.Style>
+																							<Style TargetType="Grid">
+																								<Setter Property="Visibility" Value="Collapsed" />
+																								<Style.Triggers>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPictures}" Value="True">
+																										<Setter Property="Visibility" Value="Visible" />
+																									</DataTrigger>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPicturesVertical}" Value="True">
+																										<Setter Property="Visibility" Value="Collapsed" />
+																									</DataTrigger>
+																									<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False">
+																										<Setter Property="Visibility" Value="Collapsed" />
+																									</DataTrigger>
+																								</Style.Triggers>
+																							</Style>
+																						</Grid.Style>
+																						<ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshots"
+																							Margin="12" MinHeight="230" MaxHeight="230" Background="{DynamicResource WindowBackgourndBrush}"/>
+																					</Grid>															
+																					<ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshotsVertical"
+																						Margin="12" MinHeight="230" MaxHeight="230" Background="{DynamicResource WindowBackgourndBrush}"/>
+																				</Grid>
+																			</TabItem>
+																			<TabItem>
+																				<TabItem.Header>
+																					<StackPanel Orientation="Horizontal">																			
+																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																						<TextBlock Text=" Hltb"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																					</StackPanel>
+																				</TabItem.Header>																		
+																				<TabItem.Style>
+																					<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																						<Setter Property="Visibility" Value="Visible" />
+																						<Style.Triggers>
+																						<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="False">
 																							<Setter Property="Visibility" Value="Collapsed" />
 																						</DataTrigger>
-																					</Style.Triggers>
-																				</Style>
-																			</TabItem.Style>
-																			<ContentControl x:Name="SuccessStory_PluginList" Margin="8,0,8,8" MinHeight="200" MaxHeight="200" />
-																		</TabItem>
-																		<TabItem>
-																			<TabItem.Header>
-																				<StackPanel Orientation="Horizontal">																			
-																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
-																					<TextBlock Text=" TimeLine"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
-																				</StackPanel>
-																			</TabItem.Header>																		
-																			<TabItem.Style>
-																				<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
-																					<Setter Property="Visibility" Value="Visible" />
-																					<Style.Triggers>
-																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationUserStats}" Value="False">
-																							<Setter Property="Visibility" Value="Collapsed" />
-																						</DataTrigger>
-																					</Style.Triggers>
-																				</Style>
-																			</TabItem.Style>
-																			<ContentControl x:Name="SuccessStory_PluginChart" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
-																		</TabItem>
-																		<TabItem>
-																			<TabItem.Header>
-																				<StackPanel Orientation="Horizontal">																			
-																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
-																					<TextBlock Text=" User Stats"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
-																				</StackPanel>
-																			</TabItem.Header>																		
-																			<TabItem.Style>
-																				<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
-																					<Setter Property="Visibility" Value="Visible" />
-																					<Style.Triggers>
-																						<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationUserStats}" Value="False">
-																							<Setter Property="Visibility" Value="Collapsed" />
-																						</DataTrigger>
-																					</Style.Triggers>
-																				</Style>
-																			</TabItem.Style>
-																			<ContentControl x:Name="SuccessStory_PluginUserStats" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
-																		</TabItem>
-																	</TabControl>
+																						</Style.Triggers>
+																					</Style>
+																				</TabItem.Style>																			
+																				<GridEx Margin="10,10,16,10" ColumnCount="3" StarColumns="1"
+																						RowCount="6" AutoLayoutColumns="3" Height="230">
+
+																					<GridEx.ColumnDefinitions>
+																						<ColumnDefinition Width="Auto" /> 
+																						<ColumnDefinition Width="Auto" /> 
+																						<ColumnDefinition Width="Auto" /> 
+																						<ColumnDefinition Width="Auto" /> 
+																						<ColumnDefinition Width="Auto" /> 
+																						<ColumnDefinition Width="*" /> 	
+																					</GridEx.ColumnDefinitions>	
+																					
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" 
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorFirst}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>
+																					<Label Content="Main Story" Foreground="{DynamicResource TextBrush}"  
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat}"   FontFamily="Corbel"  
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+																					
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" 
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorSecond}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>
+																					<Label Content="Extras" Foreground="{DynamicResource TextBrush}"   
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=MainExtraFormat}"   FontFamily="Corbel"
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" 
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorThird}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>										
+																					<Label Content="Completionist" Foreground="{DynamicResource TextBrush}"   
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=CompletionistFormat}"   FontFamily="Corbel"
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}"
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorFirstMulti}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>
+																					<Label Content="Solo" Foreground="{DynamicResource TextBrush}" 
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=SoloFormat}" 
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}"
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorSecondMulti}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>
+																					<Label Content="Cooperative" Foreground="{DynamicResource TextBrush}"  
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=CoOpFormat}"   FontFamily="Corbel"  
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+
+																					<Label Content="" FontFamily="{StaticResource FontIcoFont}"
+																						Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorThirdMulti}" 
+																						FontSize="{DynamicResource FontSizeLarger}" Margin="40,0,24,0"/>
+																					<Label Content="Versus" Foreground="{DynamicResource TextBrush}"   
+																						FontFamily="Corbel"  Typography.Capitals="SmallCaps" FontSize="{DynamicResource FontSizeLarger}"/>
+																					<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=VsFormat}"   FontFamily="Corbel" 
+																						FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
+																				</GridEx>
+																			</TabItem>																
+																		</TabControl>
+																		<ContentControl x:Name="SuccessStory_PluginProgressBar" Margin="12,12,12,8" Height="30" />
+																	</StackPanel>
 																</Grid>
 															</StackPanel>
 														</Expander.Content>
 													</Expander>
-
-													<Grid Visibility="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData, Converter={StaticResource BooleanToVisibilityConverter}}">
-														<Expander IsExpanded="{DynamicResource ImageInitialyExpanded}" Tag="{DynamicResource Ssv_HasData}" Margin="2,0,2,8">
-															<Expander.Style>
-																<Style TargetType="{x:Type Expander}"  BasedOn="{StaticResource {x:Type Expander}}">
-																	<Setter Property="Visibility" Value="Collapsed" />
-																	<Style.Triggers>
-																		<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowSinglePicture}" Value="True">
-																			<Setter Property="Visibility" Value="Visible" />
-																		</DataTrigger>
-																		<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationShowPictures}" Value="True">
-																			<Setter Property="Visibility" Value="Visible" />
-																		</DataTrigger>
-																	</Style.Triggers>
-																</Style>
-															</Expander.Style>
-															<Expander.Header>															
-																<DockPanel >															
-																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="24" Margin="4,4,0,0"
-																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																	<TextBlock Name="SreenshotsShowOnlyListText" Tag="{DynamicResource SreenshotsShowOnlyList}"
-																		VerticalAlignment="Center" Text=" ScreenShots " 
-																		Typography.Capitals="AllSmallCaps" Margin="0,-2,0,0"
-																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLargest}"/>
-																	<Label Name="DetailsImageCount" Content="{PluginSettings Plugin=ScreenshotsVisualizer, Path=ListScreenshots.Count}" Foreground="{DynamicResource PositiveRatingBrush}"
-																		Typography.Capitals="AllSmallCaps" FontSize="{DynamicResource FontSizeLarger}" Margin="2,2,0,0" />													
-																</DockPanel>
-															</Expander.Header>
-															<Expander.Content>
-																<StackPanel HorizontalAlignment="Stretch" > 
-																	<StackPanel Height="280" Margin="8,8,8,8"
-																		Visibility="{Binding ElementName=SreenshotsShowOnlyListText, Path=Tag, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-																		<ContentControl x:Name="ScreenshotsVisualizer_PluginSinglePicture"  MinHeight="280" MaxHeight="280"/>
-																	</StackPanel>
-																	<StackPanel Margin="12,0,12,8">
-																		<StackPanel.Style>
-																			<Style>
-																				<Setter Property="Control.Visibility" Value="Visible" />
-																				<Style.Triggers>
-																					<MultiDataTrigger>
-																						<Setter Property="Control.Visibility" Value="Collapsed" />
-																						<MultiDataTrigger.Conditions>
-																							<Condition Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=ListScreenshots.Count}" Value="1" />
-																							<Condition Binding="{Binding ElementName=SreenshotsShowOnlyListText, Path=Tag}" Value="False" />
-																						</MultiDataTrigger.Conditions>
-																					</MultiDataTrigger>
-																				</Style.Triggers>
-																			</Style>
-																		</StackPanel.Style>
-																		<ContentControl x:Name="ScreenshotsVisualizer_PluginListScreenshots" MinHeight="140" MaxHeight="140"/>
-																	</StackPanel>
-																</StackPanel>
-															</Expander.Content>
-														</Expander>
-													</Grid>
-
-													<Grid>
-														<Grid.Style>
-															<Style>
-																<Setter Property="Control.Visibility" Value="Visible" />
-																<Style.Triggers>
-																	<DataTrigger Binding="{Binding ElementName=HtlbIntegrationInCustomThemeCheck, Path=IsChecked}" Value="False">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=HtlbHasDataCheck, Path=IsChecked}" Value="False">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=HLTBToggleCheck, Path=IsChecked}" Value="False">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
-																</Style.Triggers>
-															</Style>
-														</Grid.Style>
-
-														<Expander IsExpanded="true" Tag="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Margin="2,0,2,8"
-															Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
-															<Expander.Header>															
-																<DockPanel >															
-																	<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="24" Margin="4,4,0,0"
-																		VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																	<TextBlock VerticalAlignment="Center" Text=" How Long To Beat " 
-																		Typography.Capitals="AllSmallCaps" Margin="0,-2,0,0"
-																		Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLargest}"/>
-																</DockPanel>
-															</Expander.Header>
-															<Expander.Content>
-																<GridEx Margin="10,10,16,10" ColumnCount="6" StarColumns="1"
-																		RowCount="3" AutoLayoutColumns="6">
-
-																	<GridEx.ColumnDefinitions>
-																		<ColumnDefinition Width="Auto" /> 
-																		<ColumnDefinition Width="Auto" /> 
-																		<ColumnDefinition Width="Auto" /> 
-																		<ColumnDefinition Width="Auto" /> 
-																		<ColumnDefinition Width="Auto" /> 
-																		<ColumnDefinition Width="*" /> 	
-																	</GridEx.ColumnDefinitions>	
-																	
-																	<Label Content="Main Story" Foreground="{DynamicResource TextBrushDark}"  Margin="30,0,0,0"
-																		FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat}"   FontFamily="Corbel"  FontSize="16" Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorFirst}"
-																		VerticalAlignment="Center" Margin="40,0,50,0"/>
-																	
-																	<Label Content="Extras" Foreground="{DynamicResource TextBrushDark}"  FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=MainExtraFormat}"   FontFamily="Corbel"  FontSize="16" Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorSecond}"
-																		VerticalAlignment="Center"  Margin="40,0,50,0"/> 
-
-																																		
-																	<Label Content="Completionist" Foreground="{DynamicResource TextBrushDark}"  FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=CompletionistFormat}"   FontFamily="Corbel"  FontSize="16" Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorThird}"
-																		VerticalAlignment="Center"  Margin="40,0,50,0"/>
-
-																	<Label Content="Solo" Foreground="{DynamicResource TextBrushDark}"  Margin="30,0,0,0"
-																		FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=SoloFormat}"   FontFamily="Corbel"  FontSize="16" Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorFirstMulti}"
-																		VerticalAlignment="Center" Margin="40,0,50,0"/>
-
-																	<Label Content="Cooperative" Foreground="{DynamicResource TextBrushDark}"  FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=CoOpFormat}"   FontFamily="Corbel"  FontSize="16"  Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorSecondMulti}"
-																		VerticalAlignment="Center" Margin="40,0,50,0"/>
-
-																	<Label Content="Versus" Foreground="{DynamicResource TextBrushDark}"  FontFamily="Corbel"  Typography.Capitals="AllSmallCaps" FontSize="18"/>
-																	<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=VsFormat}"   FontFamily="Corbel"  FontSize="16" Foreground="{PluginSettings Plugin=HowLongToBeat, Path=ColorThirdMulti}"
-																		VerticalAlignment="Center"  Margin="40,0,50,0"/>
-																</GridEx>
-															</Expander.Content>
-														</Expander>
-													</Grid>
+													
 												</StackPanel>
 												<GridEx Margin="2,0,2,8" 
 													ColumnCount="2" StarColumns="1"
@@ -1512,6 +1649,7 @@
 															</StackPanel>
 														</Grid>												
 
+														<!-- 
 														<Grid Margin="5,5,5,5">
 															<Grid.Style>
 																<Style TargetType="{x:Type Grid}" >
@@ -1545,7 +1683,7 @@
 																<ContentControl x:Name="GameActivity_PluginChartLog" Margin="8,15,12,12" MinHeight="150" MaxHeight="300" />
 															</StackPanel>
 														</Grid>
-
+														 -->
 														<!-- 
 														<Grid Margin="5,5,5,5">
 															<Grid.Style>
@@ -1582,6 +1720,7 @@
 														</Grid> 
 														-->
 
+														<!-- 
 														<Grid Margin="5,5,5,5">
 															<Grid.Style>
 																<Style TargetType="{x:Type Grid}" >
@@ -1614,7 +1753,7 @@
 																	Visibility="{Binding ElementName=GdSeparatorCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
 															 	<ContentControl x:Name="GameActivity_PluginChartTime" Margin="8,15,12,12" MinHeight="150" MaxHeight="300" />
 															</StackPanel>
-														</Grid>
+														</Grid> -->
 													</StackPanel>
 
 													<StackPanel>
@@ -1661,15 +1800,27 @@
 																</Grid>
 																<Separator Background="{DynamicResource PanelSeparatorBrush}" Margin="8,3,8,3"
 																	Visibility="{Binding ElementName=GdSeparatorCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
+																<CheckBox  Name="HtmlThemeColorCheck" IsChecked="{DynamicResource UseHtmlColor}" Visibility="Collapsed" /> 
 																<HtmlTextView x:Name="PART_HtmlDescription" Tag="{DynamicResource TextBrush}"
-																			HtmlFontSize="{DynamicResource FontSize}"
-																			HtmlFontFamily="{DynamicResource FontFamily}"
-																			HtmlForeground="{DynamicResource HtmlTextColor}"
-																			LinkForeground="{DynamicResource HtmlLinkColor}"
-																			MinHeight="64" FontSize="{DynamicResource FontSize}" 
-																			FontFamily="{DynamicResource FontFamily}" 
-																			UseLayoutRounding="False" 
-																			ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="8,8,8,8"/>
+																		HtmlFontSize="{DynamicResource FontSize}"
+																		HtmlFontFamily="{DynamicResource FontFamily}"
+																		MinHeight="64" FontSize="{DynamicResource FontSize}" 
+																		FontFamily="{DynamicResource FontFamily}" 
+																		UseLayoutRounding="False" 
+																		ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="8,8,8,8">
+																	<HtmlTextView.Style>
+																		<Style TargetType="HtmlTextView">
+																			<Setter Property="HtmlForeground" Value="{DynamicResource HtmlTextColor}" />
+																			<Setter Property="LinkForeground" Value="{DynamicResource HtmlLinkColor}" />
+																			<Style.Triggers>																				
+																				<DataTrigger Binding="{Binding ElementName=HtmlThemeColorCheck, Path=IsChecked}" Value="True">	
+																					<Setter Property="HtmlForeground" Value="{DynamicResource TextColor}" />
+																					<Setter Property="LinkForeground" Value="{DynamicResource GlyphColor}" />
+																				</DataTrigger>
+																			</Style.Triggers>
+																		</Style>
+																	</HtmlTextView.Style>
+																</HtmlTextView>
 															</StackPanel>
 														</Grid>
 													</StackPanel>
@@ -1693,6 +1844,154 @@
 							<Setter Property="VerticalScrollBarVisibility" Value="Auto" TargetName="GridPartialScrollViewer" />
 						</DataTrigger>
 					</ControlTemplate.Triggers>                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="DuplicateHider_ContentControlHeader_Style" TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid>
+                        <!--
+                            DataContext has an ObservableCollection called Games
+                            containing all copys of the Game in the current context (inlcuding itself).
+                            Each entry is of Type
+                            ListData {
+                                Playnite.SDK.Models.Game Game;
+                                Boolean IsCurrent;  // True if this copy eqal to the current GameContext property.
+                                BitmapImage Icon;   // Source Icon
+                                String SourceName;  // Source name. Use this rather than Game.Source.Name, 
+                                                    // because Source might be null.
+                                ICommand LaunchCommand;
+                                ICommand SelectCommand;
+                                ICommand InstallCommand;
+                                ICommand UninstallCommand;
+                            }
+                        -->
+                        <ItemsControl
+                            x:Name="DH_ListBox"
+                            Focusable="False"
+                            IsTextSearchEnabled="False"
+                            ItemsSource="{Binding Games}"
+                            VirtualizingPanel.VirtualizationMode="Recycling">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ClipToBounds="True">
+                                        <Border 
+                                            x:Name="_ItemBorder" 
+                                            Background="Transparent" 
+                                            BorderThickness="0"
+                                            OpacityMask="{DynamicResource BottomFadingBrush}"
+                                            Margin="0,0,0,2"/>
+                                        <StackPanel Margin="0,3,0,0" >
+                                            <!--  StackPanel containing icon and source name of a game.  -->
+                                            <StackPanel
+                                                x:Name="_Item"
+                                                Background="Transparent"
+                                                Orientation="Horizontal"
+                                                Effect="{DynamicResource TextDropShadow}">
+                                                <Image
+                                                    MaxHeight="20"
+                                                    Margin="5,0,5,0"
+                                                    VerticalAlignment="Center"
+                                                    DockPanel.Dock="Left"
+                                                    RenderOptions.BitmapScalingMode="Fant"
+                                                    Source="{Binding Icon}" />
+                                                <TextBlock
+                                                    x:Name="_SourceText"
+                                                    Margin="5,0,5,0"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="White"
+                                                    Text="{Binding SourceName}" Style="{DynamicResource BaseTextBlockStyle}"/>
+                                            </StackPanel>
+                                            <!--  Rectangle used to indicate the currently selected copy.  -->
+                                            <Rectangle
+                                                x:Name="_Rect"
+                                                Height="2"
+                                                Margin="0,3,0,0"
+                                                VerticalAlignment="Bottom"
+                                                RenderTransformOrigin="0.5,0"
+                                                Visibility="Visible"
+                                                Fill="{DynamicResource HighlightGlyphBrush}">
+                                                <Rectangle.Fill>
+                                                    <SolidColorBrush Color="{StaticResource GlyphColor}" />
+                                                </Rectangle.Fill>
+                                                <Rectangle.RenderTransform>
+                                                    <ScaleTransform x:Name="_RectScale" ScaleX="0" />
+                                                </Rectangle.RenderTransform>
+                                            </Rectangle>
+                                        </StackPanel>
+                                        <!--  Binding gestures to commands.  -->
+                                        <Grid.InputBindings>
+                                            <MouseBinding Command="{Binding LaunchCommand}" Gesture="LeftDoubleClick" />
+                                            <MouseBinding Command="{Binding SelectCommand}" Gesture="LeftClick" />
+                                        </Grid.InputBindings>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <!--  Workaround to prevent the animation when switching to a copy of a game for the first time  -->
+                                        <!--#region Workaround-->
+                                        <DataTrigger Binding="{Binding DataContext.SwitchedGroup, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" Value="True">
+                                            <Setter Property="Rectangle.Visibility" Value="{Binding IsCurrent, Converter={StaticResource BooleanToVisibilityConverter}}" TargetName="_Rect"/>
+                                            <Setter Property="Rectangle.RenderTransform" TargetName="_Rect">
+                                                <Setter.Value>
+                                                    <ScaleTransform ScaleX="1" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <!--#endregion-->
+                                        <!--  Animation for the selection bar below the selected item.  -->
+                                        <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="_RectScale"
+                                                            Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                            To="1"
+                                                            Duration="0:0:0.2">
+                                                            <DoubleAnimation.EasingFunction>
+                                                                <CubicEase />
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="_RectScale"
+                                                            Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                                            To="0"
+                                                            Duration="0:0:0.2">
+                                                            <DoubleAnimation.EasingFunction>
+                                                                <CubicEase />
+                                                            </DoubleAnimation.EasingFunction>
+                                                        </DoubleAnimation>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <!--  MouseOver glow effect.  -->
+                                            <Setter TargetName="_SourceText" Property="Foreground" Value="{DynamicResource GlyphBrush}"/>
+                                            <Setter TargetName="_ItemBorder" Property="Background" Value="{DynamicResource HighlightGlyphBrush}"/>
+                                        </Trigger>
+                                        <!--  Make items for unisntalled games slightly transparent.  -->
+                                        <DataTrigger Binding="{Binding Game.IsInstalled}" Value="False">
+                                            <Setter TargetName="_Item" Property="Opacity" Value="0.5" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

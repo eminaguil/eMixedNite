@@ -53,9 +53,16 @@
     <HorizontalAlignment x:Key="TextBannerHorizontalAlignment">Center</HorizontalAlignment> <!-- Values: Left Center Right  -->
        
     <!-- Description -->
+    <sys:Boolean x:Key="UseHtmlColor">False</sys:Boolean> <!-- Values: True False  -->
     <Color x:Key="HtmlTextColor">#C8D0DC</Color> 
     <Color x:Key="HtmlLinkColor">#66c0f4</Color>
 
+    <!-- DuplicateHider -->
+    <sys:Boolean x:Key="DhShowInDeatilList">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="DhShowInDeatilView">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="DhShowInGridList">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="DhShowInGridView">True</sys:Boolean> <!-- Values: True False  -->
+    
     <!-- darklinkpower ExtraMetadata plugin -->
     <sys:Boolean x:Key="UseAbsoluteExtraMetadataPath">false</sys:Boolean>
     <sys:String x:Key="ExtraMetadataPath">..\..\..\..</sys:String>
