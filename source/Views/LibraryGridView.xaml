@@ -132,7 +132,7 @@
                                     Margin="12,2,4,2" Foreground="{DynamicResource GlyphBrush}"
                                 />
                                 <SliderEx Name="eMixedGrdiDetailsWitdh"
-                                    Orientation="Horizontal"
+                                    Orientation="Horizontal" Foreground="White"
                                     VerticalAlignment="Center"
                                     Width="200" Minimum="200" Maximum="1200"
                                     Value="{Settings GrdiDetailsWitdh}"
@@ -144,7 +144,7 @@
                                     Margin="12,2,4,2" Foreground="{DynamicResource GlyphBrush}"
                                 />
                                 <SliderEx Name="eMixedBannerHeight"
-                                    Orientation="Horizontal"
+                                    Orientation="Horizontal" Foreground="White"
                                     VerticalAlignment="Center"
                                     Width="200" Minimum="0" Maximum="100"
                                     Value="{DynamicResource BannersHeight}"

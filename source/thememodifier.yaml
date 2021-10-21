@@ -28,9 +28,9 @@ Constants:
   - GameDetailsValueHorizontalAlignment: Values horizontal alignment
   - "Panels"
   - PanelSeparatorVisible: Title line separator visible
-  - SuccessInitialyExpanded: All Achievements panel is initialy expanded
-  - ImageInitialyExpanded: Screenshots panel is initialy expanded
-  - SreenshotsShowOnlyList: Sreenshots shows only list, no preview
+  - ExpanderInitialyOpen: Expander panel is initialy opened
+  - HideSuccessOnExpander: Hide SuccesStory compact when expander it's open
+  - HideHltbOnExpander: Hide hltb bar when expander it's open
   - DetailPanelOpacity(0.0,0.9): Panels opacity
   - DetailPanelLessOpacity(0.0,0.9): Links panel opacity
   - DetailsLeftColumnMinWidth(100,500): Details View left column min width

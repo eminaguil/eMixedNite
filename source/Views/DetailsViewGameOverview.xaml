@@ -777,25 +777,25 @@
 														</Grid>
 													</Grid>
 													
-													<StackPanel Visibility="Collapsed">
-														<CheckBox Name="HtlbIntegrationInCustomThemeCheck" IsChecked="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton}"  />
-														<CheckBox Name="HtlbHasDataCheck" IsChecked="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" />														
-													</StackPanel>
-													
+													<CheckBox Name="HideHltbOnExpanderCheck" IsChecked="{DynamicResource HideHltbOnExpander}" Visibility="Collapsed" />													
 													<Grid Margin="16,6,0,0">		
 														<Grid.Style>
 															<Style>
 																<Setter Property="Control.Visibility" Value="Visible" />
 																<Style.Triggers>
-																	<DataTrigger Binding="{Binding ElementName=HtlbIntegrationInCustomThemeCheck, Path=IsChecked}" Value="False">
+																	<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton}" Value="False">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=HtlbHasDataCheck, Path=IsChecked}" Value="False">
+																	<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="False">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
+																	<MultiDataTrigger>
+																		<MultiDataTrigger.Conditions>
+																			<Condition Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True" />
+																			<Condition Binding="{Binding ElementName=HideHltbOnExpanderCheck, Path=IsChecked}" Value="True" />
+																		</MultiDataTrigger.Conditions>
+																		<Setter Property="Control.Visibility" Value="Collapsed"  />
+																	</MultiDataTrigger>
 																</Style.Triggers>
 															</Style>
 														</Grid.Style>
@@ -966,33 +966,26 @@
 															</StackPanel>
 														</StackPanel>              
 													</Grid>
-													
-													<StackPanel Visibility="Collapsed">
-														
-														<!-- <CheckBox Name="ScHasDataCheck" IsChecked="{DynamicResource Sc_HasData}"  />
-														<CheckBox Name="ScEnableIntegrationInTheme" IsChecked="{DynamicResource Sc_EnableIntegrationInCustomTheme}" /> -->
 
-														<CheckBox Name="ScHasDataCheck" IsChecked="{PluginSettings Plugin=SuccessStory, Path=HasData}"  />
-														<CheckBox Name="ScEnableIntegrationInTheme" IsChecked="True" />
-													</StackPanel>
-													
+													<CheckBox Name="HideSuccessOnExpanderCheck" IsChecked="{DynamicResource HideSuccessOnExpander}" Visibility="Collapsed" />
 													<Grid Margin="8,8,8,8">
 														<Grid.Style>
 															<Style>
 																<Setter Property="Control.Visibility" Value="Visible" />
 																<Style.Triggers>
-																	<DataTrigger Binding="{Binding ElementName=ScHasDataCheck, Path=IsChecked}" Value="False">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=ScEnableIntegrationInTheme, Path=IsChecked}" Value="False">
+																	<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
 																	<DataTrigger Binding="{Binding ElementName=SuccesCompactCheck, Path=IsChecked}" Value="True">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>		
+																	<MultiDataTrigger>
+																		<MultiDataTrigger.Conditions>
+																			<Condition Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True" />
+																			<Condition Binding="{Binding ElementName=HideSuccessOnExpanderCheck, Path=IsChecked}" Value="True" />
+																		</MultiDataTrigger.Conditions>
+																		<Setter Property="Control.Visibility" Value="Collapsed"  />
+																	</MultiDataTrigger>		
 																</Style.Triggers>
 															</Style>
 														</Grid.Style>
@@ -1026,10 +1019,7 @@
 															<Style>
 																<Setter Property="Control.Visibility" Value="Visible" />
 																<Style.Triggers>
-																	<DataTrigger Binding="{Binding ElementName=ScHasDataCheck, Path=IsChecked}" Value="False">
-																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
-																	<DataTrigger Binding="{Binding ElementName=ScEnableIntegrationInTheme, Path=IsChecked}" Value="False">
+																	<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
 																	<DataTrigger Binding="{Binding ElementName=SuccesCompactCheck, Path=IsChecked}" Value="False">
@@ -1173,7 +1163,7 @@
 													</Style>
 												</StackPanel.Style>
 
-												<Expander Name="eMnDvPanelsExpander" IsExpanded="{DynamicResource SuccessInitialyExpanded}"  Margin="2,0,2,8">
+												<Expander Name="eMnDvPanelsExpander" IsExpanded="{DynamicResource ExpanderInitialyOpen}"  Margin="2,0,2,8">
 													<Expander.Style>
 														<Style TargetType="{x:Type Expander}"  BasedOn="{StaticResource {x:Type Expander}}">
 															<Setter Property="Visibility" Value="Collapsed" />

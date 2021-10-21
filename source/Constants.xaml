@@ -26,9 +26,9 @@
 
     <!-- Panels -->
     <sys:Boolean x:Key="PanelSeparatorVisible">True</sys:Boolean> <!-- Values: True False  -->
-	<sys:Boolean x:Key="ImageInitialyExpanded">True</sys:Boolean> <!-- Values: True False  -->
-    <sys:Boolean x:Key="SuccessInitialyExpanded">False</sys:Boolean> <!-- Values: True False  -->
-    <sys:Boolean x:Key="SreenshotsShowOnlyList">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="ExpanderInitialyOpen">False</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="HideHltbOnExpander">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Boolean x:Key="HideSuccessOnExpander">True</sys:Boolean> <!-- Values: True False  -->
     <sys:Double x:Key="DetailPanelOpacity">0.67</sys:Double> 
     <sys:Double x:Key="DetailPanelLessOpacity">0.8</sys:Double>
     <sys:Double x:Key="DetailsLeftColumnMinWidth">100</sys:Double>
