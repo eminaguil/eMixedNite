@@ -31,6 +31,7 @@
     <sys:Boolean x:Key="HideSuccessOnExpander">True</sys:Boolean> <!-- Values: True False  -->
     <sys:Double x:Key="DetailPanelOpacity">0.67</sys:Double> 
     <sys:Double x:Key="DetailPanelLessOpacity">0.8</sys:Double>
+    <sys:Double x:Key="DetailViewListOpacity">0.6</sys:Double> 
     <sys:Double x:Key="DetailsLeftColumnMinWidth">100</sys:Double>
     <sys:Double x:Key="GridLeftColumnMinWidth">100</sys:Double>
 
@@ -166,7 +167,8 @@
         <GradientStop Color="Transparent" Offset="0"/>
         <GradientStop Color="Transparent" Offset="0.25"/>
     </LinearGradientBrush>
-
+    
+    
     <LinearGradientBrush x:Key="WindowBackgourndBrush" StartPoint="0.6,0.8" EndPoint="1,1" >
         <GradientStop Color="#303030" Offset="0"/>
         <GradientStop Color="#800000" Offset="1.5"/>

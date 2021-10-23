@@ -1183,7 +1183,7 @@
 																				<TabItem.Header>
 																					<StackPanel Orientation="Horizontal">
 																						<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
-																						<TextBlock Text=" Detailled List"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																						<TextBlock Text=" Detailed List"  Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
 																					</StackPanel>
 																				</TabItem.Header>
 																				<TabItem.Style>

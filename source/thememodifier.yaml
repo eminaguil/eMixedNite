@@ -38,6 +38,7 @@ Constants:
   - HtmlTextColor: Game Description HTML Text Color
   - HtmlLinkColor: Game Description HTML Links Color
   - "Deatail List Items"
+  - DetailViewListOpacity(0.0,0.9): Detail list opacity
   - DeatailListMultiLineName: Multiline name instead single line
   - DeatailListInfoVisible: Information visible  
   - DeatailListFullInfo: Full info instead of single status icon

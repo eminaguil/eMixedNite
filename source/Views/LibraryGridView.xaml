@@ -17,7 +17,7 @@
                                 d:DesignWidth="1280" d:DesignHeight="960"
                                 d:DataContext="{x:Static DesignMainViewModel.DesignIntance}">
                             <GridViewGameOverview x:Name="PART_ControlGameView"
-                                                Width="{Settings GrdiDetailsWitdh}"
+                                                Width="{Binding ElementName=eMixedGrdiDetailsWitdh, Path=Value}"
                                                 DockPanel.Dock="{Settings GridViewDetailsPosition}" />                   
                             <Grid DockPanel.Dock="Left">
                                 <Grid.RowDefinitions>
