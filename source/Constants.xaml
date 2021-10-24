@@ -32,6 +32,7 @@
     <sys:Double x:Key="DetailPanelOpacity">0.67</sys:Double> 
     <sys:Double x:Key="DetailPanelLessOpacity">0.8</sys:Double>
     <sys:Double x:Key="DetailViewListOpacity">0.6</sys:Double> 
+    <sys:Double x:Key="GridViewListOpacity">0.4</sys:Double> 
     <sys:Double x:Key="DetailsLeftColumnMinWidth">100</sys:Double>
     <sys:Double x:Key="GridLeftColumnMinWidth">100</sys:Double>
 

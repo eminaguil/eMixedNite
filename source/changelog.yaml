@@ -3,6 +3,8 @@ Version: 2.25
     - Fixed SuccesStory TimeLine not showing when hiding the user stats.
     - Changed the options for the expaders, because there's only one now. You can cofigure what appers inside from the plugins settings.
     - Added a setting for hide of SuccesStory compact list and hltb bar when the expander it's open.
+    - Added opacity customization for grid and detail list backgrounds
+    - Some small fixes
 Version: 2.20
     - Added support to felixkmh DuplicateHider
         - Platform selection in list and views
