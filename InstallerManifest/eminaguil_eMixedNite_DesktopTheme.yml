@@ -27,3 +27,13 @@ Packages:
           - One only extender with all the panels as tabs
           - Hides achievements compact list and HLTB bar when extended
       - Fixed game title overlaying the cover in grid view instead of having its own area.
+  - Version: 2.25
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-10-23
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.25/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_25.pthm
+    Changelog:
+      - Fixed SuccesStory TimeLine not showing when hiding the user stats.
+      - Changed the options for the expanders, because there's only one now. You can configure what appears inside from the plugins settings.
+      - Added a setting for hide of SuccesStory compact list and hltb bar when the expander it's open.
+      - Added opacity customization for grid and detail list backgrounds
+      - Some small fixes

@@ -1,7 +1,7 @@
 ChangeLog: eMixedNite
 Version: 2.25
     - Fixed SuccesStory TimeLine not showing when hiding the user stats.
-    - Changed the options for the expaders, because there's only one now. You can cofigure what appers inside from the plugins settings.
+    - Changed the options for the expanders, because there's only one now. You can configure what appears inside from the plugins settings.
     - Added a setting for hide of SuccesStory compact list and hltb bar when the expander it's open.
     - Added opacity customization for grid and detail list backgrounds
     - Some small fixes
