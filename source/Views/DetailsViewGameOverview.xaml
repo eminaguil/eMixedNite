@@ -305,22 +305,6 @@
 														BorderBrush="{DynamicResource GlyphBrush}"
 														CornerRadius="{DynamicResource ControlCornerRadius}">
 													</Border>
-													<TextBlock Name="PlatformBannerPath" 
-														Tag="{Binding Platform.Name, Path=Content}"  Visibility="Collapsed">
-														<TextBlock.Style>
-															<Style TargetType="TextBlock">
-																<Setter Property="Text">
-																	<Setter.Value>
-																		<MultiBinding StringFormat="{}{0}{1}{2}">
-																			<Binding Source="../Images/banners/"/>
-																			<Binding RelativeSource="{RelativeSource Self}" Path="Tag" />
-																			<Binding Source=".png" />
-																		</MultiBinding>
-																	</Setter.Value>
-																</Setter>
-															</Style>
-														</TextBlock.Style>
-													</TextBlock>
 													<TextBlock Name="LibraryBannerPath" 
 														Tag="{Binding Game.Library}"  Visibility="Collapsed">
 														<TextBlock.Style>
@@ -353,7 +337,9 @@
 															</Style>
 														</TextBlock.Style>
 													</TextBlock>
-													<StackPanel>														
+													<CheckBox Name="UseItmStoreBannersCheck" IsChecked="{DynamicResource UseItmStoreBanners}"/>
+													<CheckBox Name="UseItmIconBannersCheck" IsChecked="{DynamicResource UseItmIconBanners}"/>
+													<StackPanel >
 														<Grid Tag="{DynamicResource UseItmBanners}"
 															Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
 															<Grid  Width="{Settings GridItemWidth}" Height="{DynamicResource BannersHeight}" Tag="{DynamicResource UseItmHorizontalBanner}"
@@ -362,29 +348,46 @@
 																<Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
 																		Source="../Images/stores/playnite.png">
 																</Image>    
-																<TextBlock Text="{Binding Game.Library}" 
-																	FontSize="13" Margin="6,0,0,0"
+																<TextBlock FontSize="13" Margin="6,0,0,0"
 																	HorizontalAlignment="{DynamicResource TextBannerHorizontalAlignment}" VerticalAlignment="Center"
 																	Foreground="{DynamicResource GlyphBrush}" >
 																		<TextBlock.Effect>
 																			<DropShadowEffect ShadowDepth="3"/>
 																		</TextBlock.Effect>
+																		<TextBlock.Style>
+																			<Style TargetType="TextBlock">
+																				<Setter Property="Text" Value="{Binding Game.Library}" />
+																				<Style.Triggers>
+																					<DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+																						<Setter Property="Text" Value="{Binding Game.Platforms[0].Name}" />
+																					</DataTrigger>
+																				</Style.Triggers>
+																			</Style>
+																		</TextBlock.Style>
 																</TextBlock>  
 																<Grid Tag="{DynamicResource UseItmImageBanners}"
 																		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
-																	<Image Source="{Binding ElementName=PlatformBannerPath, Path=Text}"
+																	<Image Source="{Binding Game.Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
 																		RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
 																	</Image>
-																	<Image Name="HorizontalIconSource" 
-																		HorizontalAlignment="Right" VerticalAlignment="Center"
-																		Margin="0,0,8,0" Height="20" 
-																		Source="{Binding ElementName=LibraryIconPath, Path=Text}" >
-																	</Image>                         
 																	<Image Name="HorizontalBannerSource" Tag="{DynamicResource UseItmStoreBanners}"
 																		RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
 																		Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-																		Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+																		Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
 																	</Image>
+																</Grid>
+																<Grid 
+																	Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+																	<Image  Margin="0,2,2,0" Height="20" 
+																		HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+																		Source="{Binding Game.Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
+																		Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+																	</Image>
+																	<Image  Margin="0,2,2,0" Height="20" 
+																		HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+																		Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
+																		Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+																	</Image>                                                
 																</Grid>
 															</Grid>
 														</Grid>
@@ -394,7 +397,7 @@
 																<Grid Height="{Settings GridItemHeight}" Width ="{DynamicResource BannersHeight}"  Tag="{DynamicResource UseItmHorizontalBanner}"
 																Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
 																	<Border Background="{DynamicResource ButtonBackgroundBrush}" Opacity=".9" />
-																	<TextBlock Text="{Binding Game.Library}" FontSize="15" Margin="0,0,0,6"
+																	<TextBlock FontSize="15" Margin="0,0,0,6"
 																			HorizontalAlignment="Center" VerticalAlignment="{DynamicResource TextBannerVerticalAlignment}"
 																			Foreground="{DynamicResource GlyphBrush}" >
 																		<TextBlock.LayoutTransform>
@@ -403,30 +406,53 @@
 																		<TextBlock.Effect>
 																			<DropShadowEffect ShadowDepth="3"/>
 																		</TextBlock.Effect>
+																		<TextBlock.Style>
+																			<Style TargetType="TextBlock">
+																				<Setter Property="Text" Value="{Binding Game.Library}" />
+																				<Style.Triggers>
+																					<DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+																						<Setter Property="Text" Value="{Binding Game.Platforms[0].Name}" />
+																					</DataTrigger>
+																				</Style.Triggers>
+																			</Style>
+																		</TextBlock.Style>
 																	</TextBlock>
 																	<Grid Tag="{DynamicResource UseItmImageBanners}"
 																			Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
-																		<Image Source="{Binding ElementName=PlatformBannerPath, Path=Text}"
-																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" >
-																			<Image.LayoutTransform>
-																				<RotateTransform Angle="-90" />
-																			</Image.LayoutTransform>
-																		</Image>
-																		<Image  Margin="0,2,2,0" Height="20" 
-																			HorizontalAlignment="Center" VerticalAlignment="Top"                                                
-																			Source="{Binding ElementName=LibraryIconPath, Path=Text}" >
-																			<Image.LayoutTransform>
-																				<RotateTransform Angle="-90" />
-																			</Image.LayoutTransform>
-																		</Image>                                                                  
-																		<Image Tag="{DynamicResource UseItmStoreBanners}"
-																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
-																				Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
+																		<Image Source="{Binding Game.Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
+																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" Tag="{DynamicResource UseItmStoreBanners}"
 																				Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
 																			<Image.LayoutTransform>
 																				<RotateTransform Angle="-90" />
 																			</Image.LayoutTransform>
 																		</Image>
+																		<Image Tag="{DynamicResource UseItmStoreBanners}"
+																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
+																				Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
+																				Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+																			<Image.LayoutTransform>
+																				<RotateTransform Angle="-90" />
+																			</Image.LayoutTransform>
+																		</Image>
+																	</Grid>
+																	<Grid 
+																		Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+																		<Image  Margin="0,2,2,0" Height="20" 
+																			HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+																			Source="{Binding Game.Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
+																			Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+																			<Image.LayoutTransform>
+																				<RotateTransform Angle="-90" />
+																			</Image.LayoutTransform>
+																		</Image>
+																		<Image  Margin="0,2,2,0" Height="20" 
+																			HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+																			Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
+																			Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+																			<Image.LayoutTransform>
+																				<RotateTransform Angle="-90" />
+																			</Image.LayoutTransform>
+																		</Image>                                                
 																	</Grid>
 																</Grid>
 															</Grid>
