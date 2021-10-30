@@ -480,6 +480,9 @@
 																	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
 																		<Setter Property="Visibility" Value="Visible" />
 																		<Style.Triggers>
+																			<DataTrigger Binding="{PluginStatus Plugin=GameActivity, Status=Installed}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
 																			<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationButton}" Value="False">
 																				<Setter Property="Visibility" Value="Collapsed" />
 																			</DataTrigger>
@@ -498,6 +501,9 @@
 																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
 																			<Setter Property="Visibility" Value="Visible" />
 																			<Style.Triggers>
+																				<DataTrigger Binding="{PluginStatus Plugin=HowLongToBeat, Status=Installed}" Value="False">
+																					<Setter Property="Visibility" Value="Collapsed" />
+																				</DataTrigger>
 																				<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton}" Value="False">
 																					<Setter Property="Visibility" Value="Collapsed" />
 																				</DataTrigger>
@@ -529,6 +535,9 @@
 																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
 																			<Setter Property="Visibility" Value="Visible" />
 																			<Style.Triggers>
+																				<DataTrigger Binding="{PluginStatus Plugin=ScreenshotsVisualizer, Status=Installed}" Value="False">
+																					<Setter Property="Visibility" Value="Collapsed" />
+																				</DataTrigger>
 																				<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationButton}" Value="False">
 																					<Setter Property="Visibility" Value="Collapsed" />
 																				</DataTrigger>
@@ -563,6 +572,9 @@
 																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
 																			<Setter Property="Visibility" Value="Visible" />
 																			<Style.Triggers>
+																				<DataTrigger Binding="{PluginStatus Plugin=SuccessStory, Status=Installed}" Value="False">
+																					<Setter Property="Visibility" Value="Collapsed" />
+																				</DataTrigger>
 																				<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationButton}" Value="False">
 																					<Setter Property="Visibility" Value="Collapsed" />
 																				</DataTrigger>
