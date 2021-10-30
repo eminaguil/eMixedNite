@@ -155,15 +155,17 @@
                                     ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Value}"
                                     TickFrequency="1" IsSnapToTickEnabled="True"
                                 />
-                                
+                                <!-- Coop Icon  -->
                                 <CheckBox ToolTip="Banner Visibility" Name="LbGdBannerCheck" Tag="" 
                                     IsChecked="{DynamicResource UseItmBanners}"/>
-                                <CheckBox ToolTip="Togggle Image instead of Text in Banner" Name="LbGdImageCheck" Tag=""
+                                <CheckBox ToolTip="Togggle Image instead of Text in Banner" Name="UseItmImageBannersCheck" Tag=""
                                     IsChecked="{DynamicResource UseItmImageBanners}" />
                                 <CheckBox ToolTip="Togggle Banner Position" Name="LbGdBannerPosCheck" Tag=""
                                     IsChecked="{DynamicResource UseItmHorizontalBanner}" />
-                                <CheckBox ToolTip="Use Store Banners instead of Icons" Name="LbGdStoreCheck" Tag=""
-                                    IsChecked="{DynamicResource UseItmStoreBanners}" />
+                                <CheckBox ToolTip="Toggle use of Platform instead of Library banners" Name="UseItmStoreBannersCheck" Tag=""
+                                    IsChecked="{DynamicResource UseItmStoreBanners}" />                                
+                                <CheckBox ToolTip="Toggle use of Platform / Library Icons" Name="UseItmIconBannersCheck" Tag=""
+                                    IsChecked="{DynamicResource UseItmIconBanners}" />
                                 <CheckBox ToolTip="Addiotional information Visible" Name="LbGdInfoCheck" Tag="" 
                                     IsChecked="{DynamicResource GridInfoVisible}" />
                             </StackPanel>                       

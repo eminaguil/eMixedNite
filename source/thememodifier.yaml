@@ -18,9 +18,12 @@ Constants:
   - BannersHeight(16,100): Banners height
   - UseItmHorizontalBanner: Use horizontal banner instead of vertical
   - UseItmImageBanners: Use images instead text in banner
-  - UseItmStoreBanners: Use Store Banners instead of icons
+  - UseItmStoreBanners: Use Platform instead of Library banners
+  - UseItmIconBanners: Use Platform / Library Icons in banners
   - TextBannerVerticalAlignment: Text Banner Vertical Alignment
   - TextBannerHorizontalAlignment: Text Banner Horizontal Alignment
+  - IconBannerVerticalAlignment: Icon Banner Vertical Alignment
+  - IconBannerHorizontalAlignment: Icon Banner Horizontal Alignment
   - "Details panel"
   - GameDetailsVisible: Details panel visibility
   - GameDetailsColumnToggle: Toggle one colummn instead of two

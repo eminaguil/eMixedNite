@@ -41,7 +41,6 @@
     <sys:Boolean x:Key="DeatailListInfoVisible">True</sys:Boolean> <!-- Values: True False  -->    
     <sys:Boolean x:Key="DeatailListFullInfo">True</sys:Boolean> <!-- Values: True False  --> 
 
-
     <!-- Grid Items -->
     <SolidColorBrush x:Key="GameGridItemtBrush" Color="#60202020" /> 
     <sys:Boolean x:Key="GridInfoVisible">True</sys:Boolean> <!-- Values: True False  -->
@@ -50,9 +49,12 @@
     <sys:Double x:Key="BannersHeight">30</sys:Double>
     <sys:Boolean x:Key="UseItmHorizontalBanner">False</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="UseItmImageBanners">True</sys:Boolean> <!-- Values: True False  -->
-    <sys:Boolean x:Key="UseItmStoreBanners">True</sys:Boolean> <!-- Values: True False  -->    
+    <sys:Boolean x:Key="UseItmStoreBanners">True</sys:Boolean> <!-- Values: True False  --> 
+    <sys:Boolean x:Key="UseItmIconBanners">False</sys:Boolean> <!-- Values: True False  -->    
     <VerticalAlignment x:Key="TextBannerVerticalAlignment" >Center</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
     <HorizontalAlignment x:Key="TextBannerHorizontalAlignment">Center</HorizontalAlignment> <!-- Values: Left Center Right  -->
+    <VerticalAlignment x:Key="IconBannerVerticalAlignment" >Top</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
+    <HorizontalAlignment x:Key="IconBannerHorizontalAlignment">Right</HorizontalAlignment> <!-- Values: Left Center Right  -->
        
     <!-- Description -->
     <sys:Boolean x:Key="UseHtmlColor">False</sys:Boolean> <!-- Values: True False  -->

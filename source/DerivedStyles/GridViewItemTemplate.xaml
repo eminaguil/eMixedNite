@@ -53,32 +53,68 @@
                                     <Grid  Width="{Settings GridItemWidth}" 
                                         Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                         Visibility="{Binding ElementName=LbGdBannerPosCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                        <Border Background="{DynamicResource ControlBackgroundBrush}" />
-                                        <TextBlock Text="{Binding Library}" FontSize="13" Margin="6,0,0,0"
+                                        <Border Background="{DynamicResource ButtonBackgroundBrush}" />
+                                        <TextBlock FontSize="13" Margin="6,0,0,0"
                                             HorizontalAlignment="{DynamicResource TextBannerHorizontalAlignment}" VerticalAlignment="Center"
-                                            Foreground="{DynamicResource TextBrush}" >
-                                                <TextBlock.Effect>
-                                                    <DropShadowEffect ShadowDepth="3"/>
-                                                </TextBlock.Effect>
-                                        </TextBlock>
+                                            Foreground="{DynamicResource GlyphBrush}" >
+                                            <TextBlock.Effect>
+                                                <DropShadowEffect ShadowDepth="3"/>
+                                            </TextBlock.Effect>
+                                            <TextBlock.Style>
+												<Style TargetType="TextBlock">
+													<Setter Property="Text" Value="{Binding Library}" />
+													<Style.Triggers>
+														<DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+															<Setter Property="Text" Value="{Binding Platforms[0].Name}" />
+														</DataTrigger>
+													</Style.Triggers>
+												</Style>
+											</TextBlock.Style>
+                                        </TextBlock><!-- 
                                         <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
                                                 Source="../Images/stores/playnite.png">
-                                        </Image>   
+                                        </Image>    -->
                                         <Grid 
-                                            Visibility="{Binding ElementName=LbGdImageCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <Image Source="{Binding Path=Platform.Icon, Converter={StaticResource ImageStringToImageConverter}}"
+                                            Visibility="{Binding ElementName=UseItmImageBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                                            <!-- <ItemsControl ItemsSource="{Binding Platforms}">
+												<ItemsControl.ItemsPanel>
+													<ItemsPanelTemplate>
+														<Grid/>
+													</ItemsPanelTemplate>
+												</ItemsControl.ItemsPanel>
+												<ItemsControl.ItemTemplate>
+													<DataTemplate>
+														<Grid>                                                            
+                                                            <Image Source="{Binding Cover, Converter={StaticResource ImageStringToImageConverter}}" Width="{Settings GridItemWidth}" 
+                                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
+                                                            </Image> 
+														</Grid>
+													</DataTemplate>
+												</ItemsControl.ItemTemplate>
+											</ItemsControl> -->
+
+                                            <Image Source="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
+                                                Width="{Settings GridItemHeight}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                                 RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
-                                            </Image>
-                                            <Image Name="HorizontalIconSource" 
-                                                HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                Margin="0,0,8,0" Height="20" 
-                                                Source="{Binding ElementName=LibraryIconPath, Path=Text}" >
-                                            </Image>                         
-                                            <Image Name="HorizontalBannerSource" Tag="{DynamicResource UseItmStoreBanners}"
-                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
+                                            </Image>   
+                                            <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
                                                 Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-                                                Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
                                             </Image>
+                                        </Grid>
+                                        <Grid 
+                                            Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Image  Margin="0,2,2,0" Height="20" 
+                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+                                                Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
+                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+                                            </Image>
+                                            <Image  Margin="0,2,2,0" Height="20" 
+                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+                                                Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
+                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            </Image>                                                
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -88,46 +124,68 @@
                                         <Grid Height="{Settings GridItemHeight}" 
                                             Width="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                             Visibility="{Binding ElementName=LbGdBannerPosCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-                                            <Border Background="{DynamicResource ControlBackgroundBrush}" />
-                                            <TextBlock Text="{Binding Library}" FontSize="15" Margin="0,0,0,6"
+                                            <Border Background="{DynamicResource ButtonBackgroundBrush}" />
+                                            <TextBlock FontSize="15" Margin="0,0,0,6"
                                                     HorizontalAlignment="Center" VerticalAlignment="{DynamicResource TextBannerVerticalAlignment}"
-                                                    Foreground="{DynamicResource TextBrush}" >
+                                                    Foreground="{DynamicResource GlyphBrush}" >
                                                 <TextBlock.LayoutTransform>
                                                     <RotateTransform Angle="-90"/>
                                                 </TextBlock.LayoutTransform>
                                                 <TextBlock.Effect>
                                                     <DropShadowEffect ShadowDepth="3"/>
                                                 </TextBlock.Effect>
-                                            </TextBlock>
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Text" Value="{Binding Library}" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+                                                                <Setter Property="Text" Value="{Binding Platforms[0].Name}" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock><!-- 
                                             <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
                                                     Source="../Images/stores/playnite.png">
                                                 <Image.LayoutTransform>
                                                     <RotateTransform Angle="-90" />
                                                 </Image.LayoutTransform>
-                                            </Image>
+                                            </Image> -->
                                             <Grid 
-                                                Visibility="{Binding ElementName=LbGdImageCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Image Source="{Binding Path=Platform.Icon, Converter={StaticResource ImageStringToImageConverter}}"
-                                                        RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" >
+                                                Visibility="{Binding ElementName=UseItmImageBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image Source="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
+                                                    Width="{Settings GridItemHeight}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
+                                                    RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
+                                                    <Image.LayoutTransform>
+                                                        <RotateTransform Angle="-90" />
+                                                    </Image.LayoutTransform>
+                                                </Image>                                                            
+                                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
+                                                    Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
+                                                    Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+                                                    <Image.LayoutTransform>
+                                                        <RotateTransform Angle="-90" />
+                                                    </Image.LayoutTransform>
+                                                </Image>
+                                            </Grid>
+                                            <Grid 
+                                                Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Image  Margin="0,2,2,0" Height="20" 
+                                                    HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+                                                    Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
+                                                    Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
                                                     <Image.LayoutTransform>
                                                         <RotateTransform Angle="-90" />
                                                     </Image.LayoutTransform>
                                                 </Image>
                                                 <Image  Margin="0,2,2,0" Height="20" 
-                                                    HorizontalAlignment="Center" VerticalAlignment="Top"                                                
-                                                    Source="{Binding ElementName=LibraryIconPath, Path=Text}" >
+                                                    HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+                                                    Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
+                                                    Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                     <Image.LayoutTransform>
                                                         <RotateTransform Angle="-90" />
                                                     </Image.LayoutTransform>
-                                                </Image>                                                                  
-                                                <Image Tag="{DynamicResource UseItmStoreBanners}"
-                                                        RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
-                                                        Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-                                                        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                    <Image.LayoutTransform>
-                                                        <RotateTransform Angle="-90" />
-                                                    </Image.LayoutTransform>
-                                                </Image>
+                                                </Image>                                                
                                             </Grid>
                                         </Grid>
                                     </Grid>
