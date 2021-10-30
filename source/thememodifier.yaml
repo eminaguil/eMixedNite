@@ -1,5 +1,6 @@
 Constants:
   - "General"
+  - ImageBackgroundFaded: Use Image Background partially faded
   - GameOverviewFullScroll: Enable Game Overview Full Scroll
   - ThFeaturesAtTop: ThemeModifier Features at top
   - DetailsViewLogoMaxWidth(56,400): Details View Logo Max Width

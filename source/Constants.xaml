@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
          
     <!-- No Categorized -->
+	<sys:Boolean x:Key="ImageBackgroundFaded">True</sys:Boolean> <!-- Values: True False  -->
 	<sys:Boolean x:Key="GameOverviewFullScroll">False</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="ThFeaturesAtTop">True</sys:Boolean> <!-- Values: True False  --> 
     <sys:Double x:Key="DetailsViewLogoMaxWidth">320</sys:Double>
