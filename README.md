@@ -4,14 +4,14 @@ eMixedNite is a [Playnite](https://github.com/JosefNemec/Playnite) Desktop theme
 Playnite forum thread: https://playnite.link/forum/thread-337.html
 
 ## Latest
-Big update for Playnite 9. Changes in the achievements panel and toggle between achievements compact list and (un)locked list. Added support to  Lacro59 LibraryManagement features. Added support to Lacro59 Plugin Buttons. Various fixes: controls standard coloring; details panel, some of the values not showing; theme modifier, edit constants not showing.
+Fixed Platform banners, they are back with new customization options; fixed plugin buttons showing when they aren't installed; and, added switch between Image Background partially faded or faded none.
 
 ## Features
-- Custom panels and expanders in details and grid view
+- Custom panels inside expander in details and grid view
 - Banner horizontal or vertical, icons, favorites, status in GridView Items
 - Custom integration with Lacro59 plugins: SuccesStory, HowLongToBeat, GameActivity, ScreenshotsVisualizer, LibraryManagement . Remember to enable custom integration in Appearance.
 - Custom logos with darklinkpower plugin Extra Metadata Tools
-- A lightweight version without banners or icons per source and no custom plugin integration. Ideal for customizing the plugins from their settings.
+- Hide duplicates  with felixkmh plugin DuplicateHider.
 - Added style to description if you use html, for: links, headers, paragraph, images, list and description body.
 - Customize with Lacro59 ThemeModifier colors and features
 - Quick Settings for preview features - after close, they resets, but can be changed in ThemeModifier

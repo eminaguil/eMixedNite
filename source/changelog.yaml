@@ -1,4 +1,8 @@
 ChangeLog: eMixedNite
+Version: 2.30
+    - Fixed Platform banners, they are back with new customization options.
+    - Fixed plugin buttons showing when they aren't installed.
+    - Added switch between Image Background partially faded or faded none.
 Version: 2.25
     - Fixed SuccesStory TimeLine not showing when hiding the user stats.
     - Changed the options for the expanders, because there's only one now. You can configure what appears inside from the plugins settings.

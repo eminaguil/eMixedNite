@@ -37,3 +37,11 @@ Packages:
       - Added a setting for hide of SuccesStory compact list and hltb bar when the expander it's open.
       - Added opacity customization for grid and detail list backgrounds
       - Some small fixes
+  - Version: 2.30
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-10-30
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.30/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_30.pthm
+    Changelog:
+      - Fixed Platform banners, they are back with new customization options.
+      - Fixed plugin buttons showing when they aren't installed.
+      - Added switch between Image Background partially faded or faded none.
