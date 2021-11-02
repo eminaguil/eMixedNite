@@ -514,13 +514,12 @@
 																	</Style>
 																</TextBlock.Style>
 															</TextBlock>
-															<Button ToolTip="{Binding ElementName=TtGameActivity, Path=Text}" FontSize="20"
-																Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" >
-																<Button.Style>
-																	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+															<Grid Width="Auto" Height="Auto" Margin="10,0,0,0">
+																<Grid.Style>
+																	<Style TargetType="{x:Type Grid}" BasedOn="{StaticResource {x:Type Grid}}">
 																		<Setter Property="Visibility" Value="Visible" />
 																		<Style.Triggers>
-																			<DataTrigger Binding="{PluginStatus Plugin=GameActivity, Status=Installed}" Value="False">
+																			<DataTrigger Binding="{PluginStatus Plugin=playnite-gameactivity-plugin, Status=Installed}" Value="False">
 																				<Setter Property="Visibility" Value="Collapsed" />
 																			</DataTrigger>
 																			<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationButton}" Value="False">
@@ -531,101 +530,106 @@
 																			</DataTrigger>
 																		</Style.Triggers>
 																	</Style>
-																</Button.Style>
-																<ContentControl x:Name="GameActivity_PluginButton" />
-															</Button>
+																</Grid.Style>
+																<ContentControl x:Name="GameActivity_PluginButton" FontSize="20"
+																	Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"
+																	ToolTip="{Binding ElementName=TtGameActivity, Path=Text}" />
+															</Grid>
 
-															<Button ToolTip="How Long To Beat" FontSize="20"
-																	Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" >
-																	<Button.Style>
-																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-																			<Setter Property="Visibility" Value="Visible" />
-																			<Style.Triggers>
-																				<DataTrigger Binding="{PluginStatus Plugin=HowLongToBeat, Status=Installed}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																				<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																			</Style.Triggers>
-																		</Style>
-																	</Button.Style>
-																	<ContentControl x:Name="HowLongToBeat_PluginButton" />
-																</Button>																
+															<Grid Width="Auto" Height="Auto" Margin="10,0,0,0">
+																<Grid.Style>
+																	<Style TargetType="{x:Type Grid}" BasedOn="{StaticResource {x:Type Grid}}">
+																		<Setter Property="Visibility" Value="Visible" />
+																		<Style.Triggers>
+																			<DataTrigger Binding="{PluginStatus Plugin=playnite-howlongtobeat-plugin, Status=Installed}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																			<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=EnableIntegrationButton}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																		</Style.Triggers>
+																	</Style>
+																</Grid.Style>
+																<ContentControl x:Name="HowLongToBeat_PluginButton" FontSize="20" 
+																Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"
+																ToolTip="How Long To Beat" />
+															</Grid>																
 
-																<TextBlock Name="TtImageCount" Visibility="Collapsed"
-																	Tag="{PluginSettings Plugin=ScreenshotsVisualizer, Path=ListScreenshots.Count}" >
-																	<TextBlock.Style>
-																		<Style TargetType="TextBlock">
-																			<Setter Property="Text">
-																				<Setter.Value>
-																					<MultiBinding StringFormat="{}{0}{1}{2}">
-																						<Binding Source="Screenshots Visualizer&#x0a;"/>
-																						<Binding RelativeSource="{RelativeSource Self}" Path="Tag" />
-																						<Binding Source=" image(s)"/>
-																					</MultiBinding>
-																				</Setter.Value>
-																			</Setter>
-																		</Style>
-																	</TextBlock.Style>
-																</TextBlock>
-																<Button ToolTip="{Binding ElementName=TtImageCount, Path=Text}" FontSize="20"
-																	Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" >
-																	<Button.Style>
-																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-																			<Setter Property="Visibility" Value="Visible" />
-																			<Style.Triggers>
-																				<DataTrigger Binding="{PluginStatus Plugin=ScreenshotsVisualizer, Status=Installed}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																				<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationButton}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																				<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																			</Style.Triggers>
-																		</Style>
-																	</Button.Style>
-																	<ContentControl x:Name="ScreenshotsVisualizer_PluginButton" />
-																</Button>
+															<TextBlock Name="TtImageCount" Visibility="Collapsed"
+																Tag="{PluginSettings Plugin=ScreenshotsVisualizer, Path=ListScreenshots.Count}" >
+																<TextBlock.Style>
+																	<Style TargetType="TextBlock">
+																		<Setter Property="Text">
+																			<Setter.Value>
+																				<MultiBinding StringFormat="{}{0}{1}{2}">
+																					<Binding Source="Screenshots Visualizer&#x0a;"/>
+																					<Binding RelativeSource="{RelativeSource Self}" Path="Tag" />
+																					<Binding Source=" image(s)"/>
+																				</MultiBinding>
+																			</Setter.Value>
+																		</Setter>
+																	</Style>
+																</TextBlock.Style>
+															</TextBlock>
+															<Grid Width="Auto" Height="Auto" Margin="10,0,0,0">
+																<Grid.Style>
+																	<Style TargetType="{x:Type Grid}" BasedOn="{StaticResource {x:Type Grid}}">
+																		<Setter Property="Visibility" Value="Visible" />
+																		<Style.Triggers>
+																			<DataTrigger Binding="{PluginStatus Plugin=playnite-screenshotsvisualizer-plugin, Status=Installed}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																			<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=EnableIntegrationButton}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																			<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																		</Style.Triggers>
+																	</Style>
+																</Grid.Style>
+																<ContentControl x:Name="ScreenshotsVisualizer_PluginButton" FontSize="20"
+																Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"
+																ToolTip="{Binding ElementName=TtImageCount, Path=Text}" />
+															</Grid>
 
-																<TextBlock Name="TtAchievementsPorcent" Visibility="Collapsed"
-																	Tag="{PluginSettings Plugin=SuccessStory, Path=Percent}" >
-																	<TextBlock.Style>
-																		<Style TargetType="TextBlock">
-																			<Setter Property="Text">
-																				<Setter.Value>
-																					<MultiBinding StringFormat="{}{0}{1}{2}">
-																						<Binding Source="Achievements "/>
-																						<Binding RelativeSource="{RelativeSource Self}" Path="Tag" />
-																						<Binding Source="%"/>
-																					</MultiBinding>
-																				</Setter.Value>
-																			</Setter>
-																		</Style>
-																	</TextBlock.Style>
-																</TextBlock>
-																<Button ToolTip="{Binding ElementName=TtAchievementsPorcent, Path=Text}" FontSize="20"
-																	Padding="0" Width="40" Height="40" Margin="10,0,0,0" Cursor="Hand" >
-																	<Button.Style>
-																		<Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-																			<Setter Property="Visibility" Value="Visible" />
-																			<Style.Triggers>
-																				<DataTrigger Binding="{PluginStatus Plugin=SuccessStory, Status=Installed}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																				<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationButton}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																				<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
-																					<Setter Property="Visibility" Value="Collapsed" />
-																				</DataTrigger>
-																			</Style.Triggers>
-																		</Style>
-																	</Button.Style>
-																	<ContentControl x:Name="SuccessStory_PluginButton" />
-																</Button>
+															<TextBlock Name="TtAchievementsPorcent" Visibility="Collapsed"
+																Tag="{PluginSettings Plugin=SuccessStory, Path=Percent}" >
+																<TextBlock.Style>
+																	<Style TargetType="TextBlock">
+																		<Setter Property="Text">
+																			<Setter.Value>
+																				<MultiBinding StringFormat="{}{0}{1}{2}">
+																					<Binding Source="Achievements "/>
+																					<Binding RelativeSource="{RelativeSource Self}" Path="Tag" />
+																					<Binding Source="%"/>
+																				</MultiBinding>
+																			</Setter.Value>
+																		</Setter>
+																	</Style>
+																</TextBlock.Style>
+															</TextBlock>
+															<Grid Width="Auto" Height="Auto" Margin="10,0,0,0" >
+																<Grid.Style>
+																	<Style TargetType="{x:Type Grid}" BasedOn="{StaticResource {x:Type Grid}}">
+																		<Setter Property="Visibility" Value="Visible" />
+																		<Style.Triggers>
+																			<DataTrigger Binding="{PluginStatus Plugin=playnite-successstory-plugin, Status=Installed}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																			<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=EnableIntegrationButton}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																			<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False">
+																				<Setter Property="Visibility" Value="Collapsed" />
+																			</DataTrigger>
+																		</Style.Triggers>
+																	</Style>
+																</Grid.Style>
+																<ContentControl x:Name="SuccessStory_PluginButton" FontSize="20"
+																Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"
+																ToolTip="{Binding ElementName=TtAchievementsPorcent, Path=Text}" />
+															</Grid>
 														</StackPanel>
 														
 													</Grid>

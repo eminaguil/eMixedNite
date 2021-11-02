@@ -1,4 +1,6 @@
 ChangeLog: eMixedNite
+Version: 2.31
+    - Fixed plugin buttons not showing when they are installed.
 Version: 2.30
     - Fixed Platform banners, they are back with new customization options.
     - Fixed plugin buttons showing when they aren't installed.
