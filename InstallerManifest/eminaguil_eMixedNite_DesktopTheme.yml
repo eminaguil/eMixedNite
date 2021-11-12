@@ -50,4 +50,13 @@ Packages:
     ReleaseDate: 2021-11-02
     PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.31/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_31.pthm
     Changelog:
-      - Fixed plugin buttons not showing when they are installed.      
+      - Fixed plugin buttons not showing when they are installed.
+  - Version: 2.40
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-11-11
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.40/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_40.pthm
+    Changelog:
+      - Added support to darklinkpower ExtraMetadataLoader Video Control, popup customizable with ThemeModifier
+      - Added support to darklinkpower News Viewer
+      - Fixed icon width in details view
+      - Fixed blank expander, now displays data of the first available tab

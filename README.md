@@ -4,13 +4,14 @@ eMixedNite is a [Playnite](https://github.com/JosefNemec/Playnite) Desktop theme
 Playnite forum thread: https://playnite.link/forum/thread-337.html
 
 ## Latest
+Added support to darklinkpower ExtraMetadataLoader Video Control, and news viewer. Fixed blank expander and icon width in details view.
 Fixed Platform banners, they are back with new customization options; fixed plugin buttons showing when they aren't installed; and, added switch between Image Background partially faded or faded none.
 
 ## Features
 - Custom panels inside expander in details and grid view
 - Banner horizontal or vertical, icons, favorites, status in GridView Items
 - Custom integration with Lacro59 plugins: SuccesStory, HowLongToBeat, GameActivity, ScreenshotsVisualizer, LibraryManagement . Remember to enable custom integration in Appearance.
-- Custom logos with darklinkpower plugin Extra Metadata Tools
+- Custom logos and videos with darklinkpower plugin Extra Metadata Tools
 - Hide duplicates  with felixkmh plugin DuplicateHider.
 - Added style to description if you use html, for: links, headers, paragraph, images, list and description body.
 - Customize with Lacro59 ThemeModifier colors and features
