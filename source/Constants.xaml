@@ -67,6 +67,13 @@
     <sys:Boolean x:Key="DhShowInDeatilView">True</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="DhShowInGridList">True</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="DhShowInGridView">True</sys:Boolean> <!-- Values: True False  -->
+
+    <!-- Video -->
+    <sys:Boolean x:Key="VideoShowControls">True</sys:Boolean> <!-- Values: True False  -->
+    <sys:Double x:Key="VideoPopupWidth">610</sys:Double>
+    <sys:Double x:Key="VideoPopupHeight">387</sys:Double>
+    <sys:Double x:Key="VideoPopupHorOfs">-20</sys:Double>
+    <sys:Double x:Key="VideoPopupVerOfs">80</sys:Double>
     
     <!-- darklinkpower ExtraMetadata plugin -->
     <sys:Boolean x:Key="UseAbsoluteExtraMetadataPath">false</sys:Boolean>

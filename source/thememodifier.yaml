@@ -56,6 +56,12 @@ Constants:
   - DhShowInDeatilView: Show in Deatil View
   - DhShowInGridList: Show in Grid List
   - DhShowInGridView: Show in Grid View
-  - "Extra Metadata"
+  - "Exdtra Metadata - Video"
+  - VideoShowControls: Show popup title and close button
+  - VideoPopupWidth(400,1280): Video Popup Width
+  - VideoPopupHeight(200,800): Video Popup Height
+  - VideoPopupHorOfs(-400,200): Video Popup Horizontal Offset
+  - VideoPopupVerOfs(0,100): Video Popup vertical Offset
+  - "Extra Metadata - Config"
   - UseAbsoluteExtraMetadataPath: Use Absolute Extra Metadata Path
   - ExtraMetadataPath: Extra Metadata Path

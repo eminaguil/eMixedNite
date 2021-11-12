@@ -59,7 +59,7 @@
 													<ControlTemplate>
 														<Border  BorderBrush="Transparent">
 															<Grid>
-																<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="21"
+																<Label Content="{TemplateBinding Tag}" FontFamily="{StaticResource FontIcoFont}" FontSize="21"
 																	VerticalAlignment="Stretch" HorizontalAlignment="Center" Cursor="Hand"
 																	Foreground="{DynamicResource ButtonBackgroundBrush}" Name="MainCheckIcon"
 																/>
@@ -75,7 +75,61 @@
 											</Setter>
 										</Style>
 									</StackPanel.Resources>
-									<CheckBox ToolTip="Preview Configs" Name="QuickConfigsCheck" />
+
+									<Grid>
+										<Grid.Style>
+											<Style TargetType="{x:Type Grid}">
+												<Setter Property="Visibility" Value="Visible" />
+												<Style.Triggers>
+													<DataTrigger Binding="{PluginSettings Plugin=ExtraMetadataLoader, Path=IsAnyVideoAvailable, FallbackValue=False}" Value="False">
+														<Setter Property="Visibility" Value="Collapsed" />
+													</DataTrigger>
+													<DataTrigger Binding="{PluginSettings Plugin=ExtraMetadataLoader, Path=EnableVideoPlayer, FallbackValue=False}" Value="False">
+														<Setter Property="Visibility" Value="Collapsed" />
+													</DataTrigger>
+												</Style.Triggers>
+											</Style>
+										</Grid.Style>
+										<CheckBox ToolTip="{DynamicResource LOCExtra_Metadata_Loader_VideoLabel}" Name="VideoFeedCheck" Tag=""/>
+									</Grid>
+									<CheckBox ToolTip="Preview Configs" Name="QuickConfigsCheck" Tag="" />
+
+									<Popup IsOpen="{Binding ElementName=VideoFeedCheck,Path=IsChecked}"   
+										PlacementTarget="{Binding ElementName=VideoFeedCheck}"              
+										AllowsTransparency="True"  PopupAnimation="Slide"  
+												HorizontalOffset="{DynamicResource VideoPopupHorOfs}"  VerticalOffset="{DynamicResource VideoPopupVerOfs}">  
+											<Grid Width="{DynamicResource VideoPopupWidth}" > 
+												<ContentControl x:Name="ExtraMetadataLoader_VideoLoaderControl" Margin="4,10,10,0"
+													MinHeight="{DynamicResource VideoPopupHeight}" MaxHeight="{DynamicResource VideoPopupHeight}" />
+												<Button  Padding="0" Cursor="Hand" ToolTip="{DynamicResource LOCClose}" 
+													HorizontalAlignment="Right" VerticalAlignment="Top" Margin="3"
+													Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="8" Height="19" Width="19" Tag="{DynamicResource VideoShowControls}"
+													Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+													<Button.Triggers>  
+														<EventTrigger RoutedEvent="Button.Click">  
+															<BeginStoryboard>
+																<Storyboard TargetName="VideoFeedCheck" TargetProperty="IsChecked">
+																	<BooleanAnimationUsingKeyFrames Duration="0:0:0.001">
+																		<DiscreteBooleanKeyFrame Value="False"/>
+																	</BooleanAnimationUsingKeyFrames>
+																</Storyboard>
+															</BeginStoryboard>
+														</EventTrigger>  
+													</Button.Triggers>
+												</Button>
+												<Grid  HorizontalAlignment="Left" VerticalAlignment="Top"  Tag="{DynamicResource VideoShowControls}"
+													Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+													<Border BorderBrush="{DynamicResource TooltipBackgroundBrush}" CornerRadius="4,4,4,4" BorderThickness="2,2,2,2">
+														<StackPanel Orientation="Horizontal"
+															Background="{DynamicResource TooltipBackgroundBrush}" >																			
+															<Label Content="  " FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" Margin="2"/>
+															<TextBlock Text="{DynamicResource LOCExtra_Metadata_Loader_VideoLabel}" Margin="2"
+																Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrush}"/>
+														</StackPanel>
+													</Border>
+												</Grid>
+											</Grid>
+									</Popup>  
 
 									<StackPanel Orientation="Horizontal">
 										<StackPanel.Style>
@@ -1254,12 +1308,16 @@
 																<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="True">
 																	<Setter Property="Visibility" Value="Visible" />
 																</DataTrigger>
+																<DataTrigger Binding="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}" Value="True">
+																	<Setter Property="Visibility" Value="Visible" />
+																</DataTrigger>
 																<MultiDataTrigger>
 																	<MultiDataTrigger.Conditions>
 																		<Condition Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="False" />
 																		<Condition Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="False" />
 																		<Condition Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="False" />
 																		<Condition Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="False" />
+																		<Condition Binding="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}" Value="False" />
 																	</MultiDataTrigger.Conditions>
 																	<Setter Property="Visibility" Value="Collapsed"  />
 																</MultiDataTrigger>
@@ -1272,7 +1330,7 @@
 																Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
 																<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
 																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																<TextBlock VerticalAlignment="Center" Text=" ACHIEVEMENTS " Typography.Capitals="SmallCaps"
+																<TextBlock VerticalAlignment="Center" Text=" Achievements " Typography.Capitals="SmallCaps"
 																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>	
 																
 																<Label Content="{PluginSettings Plugin=SuccessStory, Path=Unlocked}" Foreground="{DynamicResource PositiveRatingBrush}"
@@ -1286,7 +1344,7 @@
 																Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
 																<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
 																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																<TextBlock VerticalAlignment="Center" Text=" Game Activity " Typography.Capitals="SmallCaps"
+																<TextBlock VerticalAlignment="Center" Text=" Activity " Typography.Capitals="SmallCaps"
 																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>	
 																
 																<Label Content="{PluginSettings Plugin=GameActivity, Path=LastDateTimeSession}" 
@@ -1308,7 +1366,14 @@
 																Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
 																<Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarger}" 
 																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
-																<TextBlock VerticalAlignment="Center" Text=" Hltb " Typography.Capitals="SmallCaps"
+																<TextBlock VerticalAlignment="Center" Text=" Hltb  " Typography.Capitals="SmallCaps"
+																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>
+															</StackPanel>
+															<StackPanel Orientation="Horizontal" Tag="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}"
+																Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
+																<Label Content="  " FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarge}" 
+																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
+																<TextBlock VerticalAlignment="Center" Text="{DynamicResource LOC_NewsViewer_NewsViewerControl_NewsLabel}" Typography.Capitals="SmallCaps"
 																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>
 															</StackPanel>
 														</StackPanel>
@@ -1321,7 +1386,28 @@
 																<Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelLessOpacity}" />
 																<StackPanel>
 																	<TabControl>
-																		<TabItem >
+																		<TabControl.Style>
+																			<Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource {x:Type TabControl}}">
+																				<Style.Triggers>
+																					<DataTrigger Binding="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}" Value="True">
+																						<Setter Property="SelectedIndex" Value="7"/>
+																					</DataTrigger>
+																					<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="True">
+																						<Setter Property="SelectedIndex" Value="6"/>
+																					</DataTrigger>
+																					<DataTrigger Binding="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData}" Value="True">
+																						<Setter Property="SelectedIndex" Value="5"/>
+																					</DataTrigger>
+																					<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="True">
+																						<Setter Property="SelectedIndex" Value="3"/>
+																					</DataTrigger>
+																					<DataTrigger Binding="{PluginSettings Plugin=SuccessStory, Path=HasData}" Value="True">
+																						<Setter Property="SelectedIndex" Value="0"/>
+																					</DataTrigger>
+																				</Style.Triggers>
+																			</Style>
+																		</TabControl.Style>
+																		<TabItem > <!-- 0 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1343,7 +1429,7 @@
 																			</TabItem.Style>
 																			<ContentControl x:Name="SuccessStory_PluginList" Margin="8,0,8,8" MinHeight="200" MaxHeight="200" />
 																		</TabItem>
-																		<TabItem>
+																		<TabItem> <!-- 1 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1365,7 +1451,7 @@
 																			</TabItem.Style>
 																			<ContentControl x:Name="SuccessStory_PluginChart" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
 																		</TabItem>
-																		<TabItem>
+																		<TabItem> <!-- 2 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1387,7 +1473,7 @@
 																			</TabItem.Style>
 																			<ContentControl x:Name="SuccessStory_PluginUserStats" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
 																		</TabItem>
-																		<TabItem>
+																		<TabItem> <!-- 3 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1409,7 +1495,7 @@
 																			</TabItem.Style>
 																			<ContentControl x:Name="GameActivity_PluginChartLog" Margin="12" MinHeight="230" MaxHeight="230"/>
 																		</TabItem>
-																		<TabItem>
+																		<TabItem> <!-- 4 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1431,7 +1517,7 @@
 																			</TabItem.Style>
 																			<ContentControl x:Name="GameActivity_PluginChartTime" Margin="12" MinHeight="230" MaxHeight="230"/>
 																		</TabItem>
-																		<TabItem x:Name="eMnScreenShotsTab">
+																		<TabItem x:Name="eMnScreenShotsTab"> <!-- 5 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1505,7 +1591,7 @@
 																					Margin="12" MinHeight="230" MaxHeight="230" Background="{DynamicResource WindowBackgourndBrush}"/>
 																			</Grid>
 																		</TabItem>
-																		<TabItem>
+																		<TabItem> <!-- 6 -->
 																			<TabItem.Header>
 																				<StackPanel Orientation="Horizontal">																			
 																					<Label Content="" FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
@@ -1582,6 +1668,26 @@
 																				<Label Content="{PluginSettings Plugin=HowLongToBeat, Path=VsFormat}"   FontFamily="Corbel" 
 																					FontSize="{DynamicResource FontSizeLarger}" VerticalAlignment="Center" Margin="10,6,0,0"/>
 																			</GridEx>
+																		</TabItem>
+																		<TabItem> <!-- 7 -->
+																			<TabItem.Header>
+																				<StackPanel Orientation="Horizontal">																			
+																					<Label Content=" " FontFamily="{StaticResource FontIcoFont}" Foreground="{DynamicResource GlyphBrush}" />
+																					<TextBlock Text="{DynamicResource LOC_NewsViewer_NewsViewerControl_NewsLabel}"
+																						Typography.Capitals="SmallCaps" Foreground="{DynamicResource TextBrushAlt}"/>
+																				</StackPanel>
+																			</TabItem.Header>																		
+																			<TabItem.Style>
+																				<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
+																					<Setter Property="Visibility" Value="Collapsed" />
+																					<Style.Triggers>
+																						<DataTrigger Binding="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}" Value="True">
+																							<Setter Property="Visibility" Value="Visible" />
+																						</DataTrigger>
+																					</Style.Triggers>
+																				</Style>
+																			</TabItem.Style>
+																			<ContentControl x:Name="NewsViewer_NewsViewerControl" Margin="10" MinHeight="230" MaxHeight="230"/>
 																		</TabItem>																		
 																	</TabControl>
 																	<ContentControl x:Name="SuccessStory_PluginProgressBar" Margin="12,12,12,8" Height="30" />
@@ -1629,7 +1735,7 @@
 															<Separator Background="{DynamicResource PanelSeparatorBrush}" Margin="8,3,8,3"  
 																	Visibility="{Binding ElementName=SeparatorCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
 															<StackPanel VerticalAlignment="Top">
-																<Image Name="PART_ImageIcon" Height="128"
+																<Image Name="PART_ImageIcon" Height="128" Width="128" Margin="8"
 																	RenderOptions.BitmapScalingMode="Fant" />
 															</StackPanel>
 															
