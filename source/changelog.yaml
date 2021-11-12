@@ -1,4 +1,6 @@
 ChangeLog: eMixedNite
+Version: 2.41
+    - Fixed crash from 2.40
 Version: 2.40
     - Added support to darklinkpower ExtraMetadataLoader Video Control, popup customizable with ThemeModifier
     - Added support to darklinkpower News Viewer

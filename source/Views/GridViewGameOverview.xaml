@@ -1224,13 +1224,13 @@
 																			<TextBlock VerticalAlignment="Center" Text=" Hltb " Typography.Capitals="SmallCaps"
 																				Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>
 																		</StackPanel>
-																		<StackPanel Orientation="Horizontal" Tag="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}"
+																		<!-- <StackPanel Orientation="Horizontal" Tag="{PluginSettings Plugin=NewsViewer, Path=ReviewsAvailable, FallbackValue=False}"
 																			Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}" >
 																			<Label Content="  " FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarge}" 
 																				VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
 																			<TextBlock VerticalAlignment="Center" Text="{DynamicResource LOC_NewsViewer_NewsViewerControl_NewsLabel}" Typography.Capitals="SmallCaps"
 																				Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>
-																		</StackPanel>
+																		</StackPanel> -->
 																	</StackPanel>
 																</Expander.Header>
 																<Expander.Content>												
