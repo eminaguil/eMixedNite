@@ -60,3 +60,9 @@ Packages:
       - Added support to darklinkpower News Viewer
       - Fixed icon width in details view
       - Fixed blank expander, now displays data of the first available tab
+  - Version: 2.41
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-11-11
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.41/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_41.pthm
+    Changelog:
+      - Fixed crash in v2.40
