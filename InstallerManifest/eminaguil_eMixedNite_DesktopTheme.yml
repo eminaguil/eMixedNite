@@ -66,3 +66,10 @@ Packages:
     PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.41/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_41.pthm
     Changelog:
       - Fixed crash in v2.40
+  - Version: 2.44
+    RequiredApiVersion: 2.0.0
+    ReleaseDate: 2021-11-13
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.44/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_44.pthm
+    Changelog:
+      - Fixed news label in expander when there are news. Thanks to MCC321.
+      - Fixed banners size and clipping when covers are small in Grid View
