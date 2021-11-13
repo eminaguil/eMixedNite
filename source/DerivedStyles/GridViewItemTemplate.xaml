@@ -74,7 +74,7 @@
                                         <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
                                                 Source="../Images/stores/playnite.png">
                                         </Image>    -->
-                                        <Grid 
+                                        <Grid  Width="{Settings GridItemWidth}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                             Visibility="{Binding ElementName=UseItmImageBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
 
                                             <!-- <ItemsControl ItemsSource="{Binding Platforms}">
@@ -95,23 +95,33 @@
 											</ItemsControl> -->
 
                                             <Image Source="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
-                                                Width="{Settings GridItemHeight}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
-                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
+                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  
+                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             </Image>   
                                             <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
                                                 Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
                                                 Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
                                             </Image>
                                         </Grid>
-                                        <Grid 
+                                        <Grid Width="{Settings GridItemWidth}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                             Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <Image  Margin="0,2,2,0" Height="20" 
-                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+                                            <Grid.RowDefinitions>
+                                                    <RowDefinition Height="5*" />
+                                                    <RowDefinition Height="90*" />
+                                                    <RowDefinition Height="5*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="5*" />
+                                                    <ColumnDefinition Width="90*" />
+                                                    <ColumnDefinition Width="5*" />
+                                                </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="1" Grid.Column="1" 
+                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Stretch"
                                                 Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
                                                 Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
                                             </Image>
-                                            <Image  Margin="0,2,2,0" Height="20" 
-                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Center"
+                                            <Image Grid.Row="1" Grid.Column="1" 
+                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Stretch"
                                                 Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
                                                 Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             </Image>                                                
@@ -168,18 +178,26 @@
                                                     </Image.LayoutTransform>
                                                 </Image>
                                             </Grid>
-                                            <Grid 
+                                            <Grid Height="{Settings GridItemHeight}" Width="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                                 Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Image  Margin="0,2,2,0" Height="20" 
-                                                    HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="5*" />
+                                                    <RowDefinition Height="90*" />
+                                                    <RowDefinition Height="5*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="5*" />
+                                                    <ColumnDefinition Width="90*" />
+                                                    <ColumnDefinition Width="5*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
                                                     Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
                                                     Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
                                                     <Image.LayoutTransform>
                                                         <RotateTransform Angle="-90" />
                                                     </Image.LayoutTransform>
                                                 </Image>
-                                                <Image  Margin="0,2,2,0" Height="20" 
-                                                    HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
+                                                <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
                                                     Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
                                                     Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                     <Image.LayoutTransform>
@@ -249,34 +267,39 @@
                                         Width="{Settings GridItemWidth}" 
                                     />
                                 </StackPanel>
-                                <Grid Grid.Row="2" Grid.Column="0" Height="34" Background="{DynamicResource WindowBackgourndBrush}"
-                                    Visibility="{Binding ElementName=LbGdInfoCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="12" Margin="15,15,0,0"
-                                        Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
-                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="13" Margin="4,0,8,0"
-                                        Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
-                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" >
-                                        <TextBlock ToolTip="{DynamicResource LOCLastPlayed}"
-                                            Text="{Binding Path=LastActivity, Converter={StaticResource DateTimeToLastPlayedConverter}}"
-                                            TextBlock.Foreground="{DynamicResource TextBrush}" Margin="4,0,4,0"
-                                            FontSize="11"/>
-                                        <TextBlock Text="{Binding Playtime, Converter={StaticResource PlayTimeToStringConverter}}"
-                                            ToolTip="{DynamicResource LOCTimePlayed}" Margin="15,2,4,0"
-                                            TextBlock.Foreground="{DynamicResource TextBrush}" FontSize="11"/>
-                                    </StackPanel>
-                                    <Label FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="4,0,4,0"
-                                        VerticalAlignment="Center" Name="CompletionStatuIcon" ToolTip="{Binding CompletionStatus.Name}"
-                                        Foreground="Silver" Grid.Column="2"/>
-                                    <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="16" Margin="0,0,4,0"
-                                        VerticalAlignment="Center"  Name="GameFavorite" ToolTip="{DynamicResource LOCGameFavoriteTitle}"
-                                        Visibility="Collapsed" Foreground="{DynamicResource PositiveRatingBrush}" Grid.Column="3"/>
-                                </Grid>
+                                <StackPanel Background="{DynamicResource WindowBackgourndBrush}" 
+                                        Visibility="{Binding ElementName=LbGdInfoCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                                    <Grid Height="34" Width="{Settings GridItemWidth}"
+                                        Visibility="{Binding ElementName=LbGdInfoCompactCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Content=""  ToolTip="{Binding Playtime, Converter={StaticResource PlayTimeToStringConverter}}"
+                                            FontFamily="{StaticResource FontIcoFont}" FontSize="12" Margin="15,15,0,0"
+                                            Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
+                                        <Label Content="" ToolTip="{Binding Path=LastActivity, Converter={StaticResource DateTimeToLastPlayedConverter}}"
+                                            FontFamily="{StaticResource FontIcoFont}" FontSize="13" Margin="4,0,8,0"
+                                            Foreground="{DynamicResource GlyphBrush}" Background="Transparent" Grid.Column="0"/>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                                            <TextBlock ToolTip="{DynamicResource LOCLastPlayed}"
+                                                Text="{Binding Path=LastActivity, Converter={StaticResource DateTimeToLastPlayedConverter}}"
+                                                TextBlock.Foreground="{DynamicResource TextBrush}" Margin="4,0,4,0"
+                                                FontSize="11"/>
+                                            <TextBlock Text="{Binding Playtime, Converter={StaticResource PlayTimeToStringConverter}}"
+                                                ToolTip="{DynamicResource LOCTimePlayed}" Margin="15,2,4,0"
+                                                TextBlock.Foreground="{DynamicResource TextBrush}" FontSize="11"/>
+                                        </StackPanel>
+                                        <Label FontFamily="{StaticResource FontIcoFont}" FontSize="14" Margin="4,0,4,0"
+                                            VerticalAlignment="Center" Name="CompletionStatuIcon" ToolTip="{Binding CompletionStatus.Name}"
+                                            Foreground="Silver" Grid.Column="2"/>
+                                        <Label Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="14" Margin="0,0,4,0"
+                                            VerticalAlignment="Center"  Name="GameFavorite" ToolTip="{DynamicResource LOCGameFavoriteTitle}"
+                                            Visibility="Collapsed" Foreground="{DynamicResource PositiveRatingBrush}" Grid.Column="3"/>
+                                    </Grid>
+                                </StackPanel>
                             </StackPanel>
                         </Grid>
                     </Border>

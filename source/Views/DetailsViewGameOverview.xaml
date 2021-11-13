@@ -1386,7 +1386,7 @@
 																		</Style.Triggers>
 																	</Style>
 																</Grid.Style>
-																<Label Grid.Column="0" Margin="-5,0,2,0" Content="  " FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarge}" 
+																<Label Grid.Column="0" Content="  " FontFamily="{StaticResource FontIcoFont}" FontSize="{DynamicResource FontSizeLarge}" 
 																	VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource GlyphBrush}"/>
 																<TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{DynamicResource LOC_NewsViewer_NewsViewerControl_NewsLabel}" Typography.Capitals="SmallCaps"
 																	Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}"/>

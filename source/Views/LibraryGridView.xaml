@@ -166,7 +166,7 @@
                                     IsChecked="{DynamicResource UseItmStoreBanners}" />                                
                                 <CheckBox ToolTip="Toggle use of Platform / Library Icons" Name="UseItmIconBannersCheck" Tag=""
                                     IsChecked="{DynamicResource UseItmIconBanners}" />
-                                <CheckBox ToolTip="Addiotional information Visible" Name="LbGdInfoCheck" Tag="" 
+                                <CheckBox ToolTip="AdIiotional information Visible" Name="LbGdInfoCheck" Tag="" 
                                     IsChecked="{DynamicResource GridInfoVisible}" />
                             </StackPanel>                       
                         </StackPanel>

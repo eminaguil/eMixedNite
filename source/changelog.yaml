@@ -1,9 +1,12 @@
 ChangeLog: eMixedNite
+Version: 2.44
+    - Fixed news label in expander when there are news. Thanks to MCC321.
+    - Fixed banners size desconfiguration when covers are small in Grid View
 Version: 2.41
     - Fixed crash from 2.40
 Version: 2.40
-    - Added support to darklinkpower ExtraMetadataLoader Video Control, popup customizable with ThemeModifier
-    - Added support to darklinkpower News Viewer
+    - Added suport to darklinkpower ExtraMetadataLoader Video Control, popup customizable with ThemeModifier
+    - Added suport to darklinkpower News Viewer
     - Fixed icon width in details view
     - Fixed blank expander, now displays data of the first available tab
 Version: 2.31
