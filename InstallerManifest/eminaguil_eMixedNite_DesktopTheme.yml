@@ -73,3 +73,13 @@ Packages:
     Changelog:
       - Fixed news label in expander when there are news. Thanks to MCC321.
       - Fixed banners size and clipping when covers are small in Grid View
+  - Version: 2.50
+    RequiredApiVersion: 2.1.0
+    ReleaseDate: 2021-12-04
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.50/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_50.pthm
+    Changelog:
+    - Added option for show playnite icon in banner
+    - Added completion status translate system, editable in the theme. Thanks to Lacro59.
+    - Added option for hide the main eMixedNite panel, only the buttons are visible.
+    - Fixed description width when details are hidden.
+    - Updated to API 2.1.0
