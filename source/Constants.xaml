@@ -3,6 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
          
     <!-- No Categorized -->
+    <sys:Boolean x:Key="eMnMainPanelExpanded">True</sys:Boolean> <!-- Values: True False  -->
 	<sys:Boolean x:Key="ImageBackgroundFaded">True</sys:Boolean> <!-- Values: True False  -->
 	<sys:Boolean x:Key="GameOverviewFullScroll">False</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="ThFeaturesAtTop">True</sys:Boolean> <!-- Values: True False  --> 
@@ -51,7 +52,9 @@
     <sys:Boolean x:Key="UseItmHorizontalBanner">False</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="UseItmImageBanners">True</sys:Boolean> <!-- Values: True False  -->
     <sys:Boolean x:Key="UseItmStoreBanners">True</sys:Boolean> <!-- Values: True False  --> 
-    <sys:Boolean x:Key="UseItmIconBanners">False</sys:Boolean> <!-- Values: True False  -->    
+    <sys:Boolean x:Key="UseItmIconBanners">False</sys:Boolean> <!-- Values: True False  --> 
+    <sys:Boolean x:Key="UsePlayniteIcon">True</sys:Boolean> <!-- Values: True False  --> 
+    <sys:Boolean x:Key="UsePlayniteBanners">True</sys:Boolean> <!-- Values: True False  -->        
     <VerticalAlignment x:Key="TextBannerVerticalAlignment" >Center</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
     <HorizontalAlignment x:Key="TextBannerHorizontalAlignment">Center</HorizontalAlignment> <!-- Values: Left Center Right  -->
     <VerticalAlignment x:Key="IconBannerVerticalAlignment" >Top</VerticalAlignment> <!-- Values: Top Center Bottom  -->    
@@ -85,11 +88,21 @@
     <sys:String x:Key="NotPlayedStatusIcon"></sys:String>
 	<sys:String x:Key="PlayingStatusIcon"></sys:String>
 	<sys:String x:Key="PlayedStatusIcon"></sys:String>
-	<sys:String x:Key="CompletedStatusIcon"></sys:String>
+	<sys:String x:Key="CompletedStatusIcon"></sys:String>
 	<sys:String x:Key="BeatenStatusIcon"></sys:String>
 	<sys:String x:Key="AbandonedStatusIcon"></sys:String>
-	<sys:String x:Key="OnHoldStatusIcon"></sys:String>
+	<sys:String x:Key="OnHoldStatusIcon"></sys:String>
 	<sys:String x:Key="PlanToPlayStatusIcon"></sys:String>
+
+    <!-- Compleation Status Text-->
+    <sys:String x:Key="DE_NotPlayedStatus">Not Played</sys:String>
+    <sys:String x:Key="DE_PlayingStatus">Playing</sys:String>
+    <sys:String x:Key="DE_PlayedStatus">Played</sys:String>
+    <sys:String x:Key="DE_CompletedStatus">Completed</sys:String>
+    <sys:String x:Key="DE_BeatenStatus">Beaten</sys:String>
+    <sys:String x:Key="DE_AbandonedStatus">Abandoned</sys:String>
+    <sys:String x:Key="DE_OnHoldStatus">On Hold</sys:String>
+    <sys:String x:Key="DE_PlanToPlayStatus">Plan to Play</sys:String>
 
     <!-- Compleation Status Brushes-->
     <SolidColorBrush x:Key="NoneStatusBrush" Color="#404040" />

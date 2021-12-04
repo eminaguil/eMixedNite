@@ -359,7 +359,13 @@
 										<Border Background="{DynamicResource WindowBackgourndBrush}" 
 											Opacity="{DynamicResource DetailPanelOpacity}" 
 											CornerRadius="{DynamicResource ControlCornerRadius}"
-										/>
+											Visibility="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+										<ToggleButton Name="eMnMainPanelToggle" Opacity="0.35"
+											Style="{DynamicResource MyExpanderDownHeaderStyle}"
+											VerticalAlignment="Top" HorizontalAlignment="Right"
+											IsChecked="{DynamicResource eMnMainPanelExpanded}" />
+
 										<StackPanel >
 											<Grid Margin="0,0,0,0"  Width="{Binding ElementName=Container,Path=ActualWidth}">
 												<Grid.ColumnDefinitions>
@@ -367,7 +373,18 @@
 													<ColumnDefinition Width="*"/>
 												</Grid.ColumnDefinitions>
 												
-												<Grid Grid.Column="0" VerticalAlignment="Center" Margin="15,12,0,12">												
+												<Grid Grid.Column="0" VerticalAlignment="Center" Margin="15,12,0,12">													
+													<Grid.Style>
+														<Style>
+															<Setter Property="Control.Visibility" Value="Collapsed" />
+															<Style.Triggers>
+																<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
+																	<Setter Property="Control.Visibility" Value="Visible" />
+																</DataTrigger>
+															</Style.Triggers>
+														</Style>
+													</Grid.Style>
+
 													<Border BorderThickness="5" Margin="-5"
 														Visibility="{Binding ElementName=CoverOutlineCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" 
 														BorderBrush="{DynamicResource GlyphBrush}"
@@ -405,8 +422,8 @@
 															</Style>
 														</TextBlock.Style>
 													</TextBlock>
-													<CheckBox Name="UseItmStoreBannersCheck" IsChecked="{DynamicResource UseItmStoreBanners}"/>
-													<CheckBox Name="UseItmIconBannersCheck" IsChecked="{DynamicResource UseItmIconBanners}"/>
+													<CheckBox Name="UseItmStoreBannersCheck" IsChecked="{DynamicResource UseItmStoreBanners}" Visibility="Collapsed"/>
+													<CheckBox Name="UseItmIconBannersCheck" IsChecked="{DynamicResource UseItmIconBanners}" Visibility="Collapsed"/>
 													<StackPanel >
 														<Grid Tag="{DynamicResource UseItmBanners}"
 															Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -688,7 +705,17 @@
 														
 													</Grid>
 													
-													<Grid Margin="16,8,0,0">
+													<Grid Margin="16,8,0,0">																
+														<Grid.Style>
+															<Style>
+																<Setter Property="Control.Visibility" Value="Collapsed" />
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
+																		<Setter Property="Control.Visibility" Value="Visible" />
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</Grid.Style>
 														<Grid.RowDefinitions>
 															<RowDefinition Height="*" />
 															<RowDefinition Height="*" />
@@ -899,6 +926,9 @@
 																	<DataTrigger Binding="{PluginSettings Plugin=HowLongToBeat, Path=HasData}" Value="False">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
 																	</DataTrigger>
+																	<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="False">
+																		<Setter Property="Control.Visibility" Value="Collapsed" />
+																	</DataTrigger>
 																	<MultiDataTrigger>
 																		<MultiDataTrigger.Conditions>
 																			<Condition Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True" />
@@ -1056,6 +1086,16 @@
 													</Grid>
 													
 													<Grid Margin="12,0,0,0" Height="Auto"  Width="{Binding ElementName=Container,Path=ActualWidth}">
+														<Grid.Style>
+															<Style>
+																<Setter Property="Control.Visibility" Value="Collapsed" />
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
+																		<Setter Property="Control.Visibility" Value="Visible" />
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</Grid.Style>
 														<Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelLessOpacity}" />
 														<StackPanel Orientation="Horizontal">
 															<Label Margin="12,3,8,0" Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="25"
@@ -1088,7 +1128,10 @@
 																	</DataTrigger>
 																	<DataTrigger Binding="{Binding ElementName=SuccesCompactCheck, Path=IsChecked}" Value="True">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>
+																	</DataTrigger>																		
+																		<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="False">
+																			<Setter Property="Control.Visibility" Value="Collapsed" />
+																		</DataTrigger>
 																	<MultiDataTrigger>
 																		<MultiDataTrigger.Conditions>
 																			<Condition Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True" />
@@ -1137,7 +1180,10 @@
 																	</DataTrigger>
 																	<DataTrigger Binding="{Binding ElementName=eMnDvPanelsExpander, Path=IsExpanded}" Value="True">
 																		<Setter Property="Control.Visibility" Value="Collapsed" />
-																	</DataTrigger>		
+																	</DataTrigger>
+																	<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="False">
+																		<Setter Property="Control.Visibility" Value="Collapsed" />
+																	</DataTrigger>	
 																</Style.Triggers>
 															</Style>
 														</Grid.Style>
@@ -1182,45 +1228,6 @@
 										HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 										<StackPanel>
 											<StackPanel.Resources>
-												<Style x:Key="MyExpanderDownHeaderStyle" TargetType="{x:Type ToggleButton}">
-													<Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-													<Setter Property="SnapsToDevicePixels" Value="True" />
-													<Setter Property="Template">
-														<Setter.Value>
-															<ControlTemplate TargetType="{x:Type ToggleButton}">
-																<Border Padding="{TemplateBinding Padding}">
-																	<Grid Margin="16,8,0,4">
-																		<Grid.ColumnDefinitions>
-																			<ColumnDefinition Width="*" />
-																			<ColumnDefinition Width="Auto" />
-																		</Grid.ColumnDefinitions>
-																		<TextBlock Text=" " x:Name="UpArrow" 
-																				VerticalAlignment="Center" HorizontalAlignment="Left"
-																				Style="{DynamicResource BaseTextBlockStyle}" FontFamily="{StaticResource FontIcoFont}" 
-																				Foreground="{DynamicResource TextBrushDark}" FontSize="18" MinWidth="20" 
-																				FontWeight="Bold" Margin="2,0,2,0"
-																				Grid.Column="1" TextAlignment="Center" />
-																		<TextBlock Text=" " x:Name="DownArrow" 
-																				VerticalAlignment="Center" HorizontalAlignment="Left"
-																				Style="{DynamicResource BaseTextBlockStyle}" FontFamily="{StaticResource FontIcoFont}" 
-																				Foreground="{DynamicResource TextBrushDark}" FontSize="18" MinWidth="20" 
-																				FontWeight="Bold" Margin="2,0,2,0"
-																				Visibility="Collapsed"
-																				Grid.Column="1" TextAlignment="Center"/>
-																		<ContentPresenter Grid.Column="0" VerticalAlignment="Center"
-																						SnapsToDevicePixels="True" HorizontalAlignment="Stretch" RecognizesAccessKey="True"  />
-																	</Grid>
-																</Border>
-																<ControlTemplate.Triggers>
-																	<Trigger Property="IsChecked" Value="True">
-																		<Setter Property="Visibility" TargetName="DownArrow" Value="Visible" />
-																		<Setter Property="Visibility" TargetName="UpArrow" Value="Collapsed" />
-																	</Trigger>
-																</ControlTemplate.Triggers>
-															</ControlTemplate>
-														</Setter.Value>
-													</Setter>
-												</Style>
 
 												<Style TargetType="{x:Type Expander}">
 													<Setter Property="BorderThickness" Value="0" />
@@ -1719,19 +1726,19 @@
 												ColumnCount="2" StarColumns="1"
 												RowCount="38" AutoLayoutColumns="2">
 												
-												<StackPanel MinWidth="{DynamicResource DetailsLeftColumnMinWidth}">
+												<StackPanel MinWidth="{DynamicResource DetailsLeftColumnMinWidth}">														
+													<StackPanel.Style>
+														<Style TargetType="StackPanel">
+															<Setter Property="Visibility" Value="Collapsed" />
+															<Style.Triggers>
+																<DataTrigger Binding="{Binding ElementName=DetailCheck, Path=IsChecked}" Value="True">
+																	<Setter Property="Visibility" Value="Visible" />
+																</DataTrigger>
+															</Style.Triggers>
+														</Style>
+													</StackPanel.Style>
 
-													<Grid  Margin="5,5,5,5"  >														
-														<Grid.Style>
-															<Style TargetType="Grid">
-																<Setter Property="Visibility" Value="Collapsed" />
-																<Style.Triggers>
-																	<DataTrigger Binding="{Binding ElementName=DetailCheck, Path=IsChecked}" Value="True">
-																		<Setter Property="Visibility" Value="Visible" />
-																	</DataTrigger>
-																</Style.Triggers>
-															</Style>
-														</Grid.Style>
+													<Grid  Margin="5,5,5,5"  >
 														<Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelOpacity}" CornerRadius="{DynamicResource ControlCornerRadius}" />
 														<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 																	Orientation="Vertical" Height="Auto" Width="Auto">
@@ -2155,4 +2162,43 @@
             </Setter.Value>
         </Setter>
     </Style>
+	<Style x:Key="MyExpanderDownHeaderStyle" TargetType="{x:Type ToggleButton}">
+		<Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Border Padding="{TemplateBinding Padding}">
+						<Grid Margin="16,8,0,4">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<TextBlock Text=" " x:Name="UpArrow" 
+									VerticalAlignment="Center" HorizontalAlignment="Left"
+									Style="{DynamicResource BaseTextBlockStyle}" FontFamily="{StaticResource FontIcoFont}" 
+									Foreground="{DynamicResource TextBrushDark}" FontSize="18" MinWidth="20" 
+									FontWeight="Bold" Margin="2,0,2,0"
+									Grid.Column="1" TextAlignment="Center" />
+							<TextBlock Text=" " x:Name="DownArrow" 
+									VerticalAlignment="Center" HorizontalAlignment="Left"
+									Style="{DynamicResource BaseTextBlockStyle}" FontFamily="{StaticResource FontIcoFont}" 
+									Foreground="{DynamicResource TextBrushDark}" FontSize="18" MinWidth="20" 
+									FontWeight="Bold" Margin="2,0,2,0"
+									Visibility="Collapsed"
+									Grid.Column="1" TextAlignment="Center"/>
+							<ContentPresenter Grid.Column="0" VerticalAlignment="Center"
+											SnapsToDevicePixels="True" HorizontalAlignment="Stretch" RecognizesAccessKey="True"  />
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Visibility" TargetName="DownArrow" Value="Visible" />
+							<Setter Property="Visibility" TargetName="UpArrow" Value="Collapsed" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

@@ -1,5 +1,6 @@
 Constants:
   - "General"
+  - eMnMainPanelExpanded: Toggle Main panel expanded / Only the buttons visible.
   - ImageBackgroundFaded: Use Image Background partially faded
   - GameOverviewFullScroll: Enable Game Overview Full Scroll
   - ThFeaturesAtTop: ThemeModifier Features at top
@@ -25,6 +26,7 @@ Constants:
   - TextBannerHorizontalAlignment: Text Banner Horizontal Alignment
   - IconBannerVerticalAlignment: Icon Banner Vertical Alignment
   - IconBannerHorizontalAlignment: Icon Banner Horizontal Alignment
+  - UsePlayniteIcon: Use Playnite Icon in banners
   - "Details panel"
   - GameDetailsVisible: Details panel visibility
   - GameDetailsColumnToggle: Toggle one colummn instead of two
@@ -39,6 +41,7 @@ Constants:
   - DetailPanelLessOpacity(0.0,0.9): Links panel opacity
   - DetailsLeftColumnMinWidth(100,500): Details View left column min width
   - GridLeftColumnMinWidth(100,500): Grid View left column min width
+  - UseHtmlColor: Uses Html Color instead of theme colors
   - HtmlTextColor: Game Description HTML Text Color
   - HtmlLinkColor: Game Description HTML Links Color
   - "Deatail List Items"
@@ -51,12 +54,21 @@ Constants:
   - GameGridItemtBrush: Darkened effect for Grid View Items
   - GridInfoVisible: Item information visible
   - GridControlVerticalAlignment: Controls Vertical Alignment
+  - "Completation Status"
+  - DE_NotPlayedStatus: Status Not Played
+  - DE_PlayingStatus: Status Playing
+  - DE_PlayedStatus: Status Played
+  - DE_CompletedStatus: Status Played
+  - DE_BeatenStatus: Status Beaten
+  - DE_AbandonedStatus: Status Abandoned
+  - DE_OnHoldStatus: Status OnHold
+  - DE_PlanToPlayStatus: Status PlanToPlay
   - "Duplicate Hider"
   - DhShowInDeatilList: Show in Deatil List
   - DhShowInDeatilView: Show in Deatil View
   - DhShowInGridList: Show in Grid List
   - DhShowInGridView: Show in Grid View
-  - "Exdtra Metadata - Video"
+  - "Extra Metadata - Video"
   - VideoShowControls: Show popup title and close button
   - VideoPopupWidth(400,1280): Video Popup Width
   - VideoPopupHeight(200,800): Video Popup Height
