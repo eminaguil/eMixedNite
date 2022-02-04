@@ -587,9 +587,25 @@
 																			Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"
 																			ToolTip="{Binding ElementName=TtAchievementsPorcent, Path=Text}" />
 																		</Grid>
+
+																		<Grid Width="Auto" Height="Auto" Margin="10,0,0,0" >
+																			<Grid.Style>
+																				<Style TargetType="{x:Type Grid}" BasedOn="{StaticResource {x:Type Grid}}">
+																					<Setter Property="Visibility" Value="Visible" />
+																					<Style.Triggers>
+																						<DataTrigger Binding="{PluginStatus Plugin=playnite-checkdlc-plugin, Status=Installed}" Value="False">
+																							<Setter Property="Visibility" Value="Collapsed" />
+																						</DataTrigger>
+																					</Style.Triggers>
+																				</Style>
+																			</Grid.Style>
+																			<ContentControl x:Name="CheckDlc_PluginButton" FontSize="20" ToolTip="Check DLC"
+																			Padding="0" Width="40" Height="40" Margin="0,0,0,0" Cursor="Hand"/>
+																		</Grid>
 																	</StackPanel>
 																</Grid>
 
+																<ScrollViewer HorizontalScrollBarVisibility="Auto">
 																<Grid Margin="0,8,0,0">															
 																	<Grid.Style>
 																		<Style>
@@ -785,6 +801,7 @@
 																		</Grid>
 																	</Grid>
 																</Grid>
+																</ScrollViewer>
 															</StackPanel>
 															
 														</Grid>
@@ -946,24 +963,34 @@
 																	Width="{Binding ElementName=PART_HltbProgressBar, Path=ActualWidth}" />
 															</StackPanel>
 														</Grid>
-														
-														<Grid Margin="0,0,0,0" Height="Auto"  Width="{Binding ElementName=Container,Path=ActualWidth}">
-															<Grid.Style>
-																<Style>
-																	<Setter Property="Control.Visibility" Value="Collapsed" />
-																	<Style.Triggers>
-																		<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
-																			<Setter Property="Control.Visibility" Value="Visible" />
-																		</DataTrigger>
-																	</Style.Triggers>
-																</Style>
-															</Grid.Style>
+														<Grid ToolTip="{DynamicResource LOCLinksLabel}"  Margin="0,0,0,0" Height="Auto"  
+															Width="{Binding ElementName=Container,Path=ActualWidth}">
 															<Border Background="{DynamicResource WindowBackgourndBrush}" Opacity="{DynamicResource DetailPanelLessOpacity}" />
-															<StackPanel Orientation="Horizontal">
-																<Label Margin="8,4,8,0" Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="21"
-																			VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource TextBrush}"/> 
-																<StackPanel >
-																	<ItemsControl Name="PART_ItemsLinks"  Margin="2,8,0,0" VerticalAlignment="Center" Height="30" Grid.Row="0">
+															<ScrollViewer HorizontalScrollBarVisibility="Auto">
+																<Grid Margin="0,0,0,0">
+																	<Grid.Style>
+																		<Style>
+																			<Setter Property="Control.Visibility" Value="Collapsed" />
+																			<Style.Triggers>
+																				<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
+																					<Setter Property="Control.Visibility" Value="Visible" />
+																				</DataTrigger>
+																			</Style.Triggers>
+																		</Style>
+																	</Grid.Style>
+																	<Grid.ColumnDefinitions>
+																		<ColumnDefinition Width="Auto"/>
+																		<ColumnDefinition Width="*" />
+																	</Grid.ColumnDefinitions>
+
+																	<Label Margin="8,4,8,0" Grid.Column="0"
+																		Content="" FontFamily="{StaticResource FontIcoFont}" FontSize="21"
+																		VerticalAlignment="Center" HorizontalAlignment="Center" 
+																		Foreground="{DynamicResource TextBrush}"/>																	
+
+																	
+																	<ItemsControl Name="PART_ItemsLinks"  Margin="2,8,0,0" VerticalAlignment="Center" 
+																		Height="30" Grid.Column="1">
 																		<ItemsControl.ItemsPanel>
 																			<ItemsPanelTemplate>
 																				<StackPanel Orientation="Horizontal"/>
@@ -975,8 +1002,9 @@
 																			</Style>
 																		</ItemsControl.ItemContainerStyle>
 																	</ItemsControl>
-																</StackPanel>
-															</StackPanel>
+																	
+																</Grid>
+															</ScrollViewer>
 														</Grid>
 															
 														<CheckBox Name="HideSuccessOnExpanderCheck" IsChecked="{DynamicResource HideSuccessOnExpander}" Visibility="Collapsed" />

@@ -44,7 +44,7 @@
     <sys:Boolean x:Key="DeatailListFullInfo">True</sys:Boolean> <!-- Values: True False  --> 
 
     <!-- Grid Items -->
-    <SolidColorBrush x:Key="GameGridItemtBrush" Color="#60202020" /> 
+    <SolidColorBrush x:Key="GameGridItemtBrush" Color="#20FFFFFF" /> 
     <sys:Boolean x:Key="GridInfoVisible">True</sys:Boolean> <!-- Values: True False  -->
     <VerticalAlignment x:Key="GridControlVerticalAlignment" >Bottom</VerticalAlignment> <!-- Values: Top Center Bottom  -->
     <sys:Boolean x:Key="UseItmBanners">True</sys:Boolean> <!-- Values: True False  -->
@@ -62,7 +62,7 @@
        
     <!-- Description -->
     <sys:Boolean x:Key="UseHtmlColor">False</sys:Boolean> <!-- Values: True False  -->
-    <Color x:Key="HtmlTextColor">#C8D0DC</Color> 
+    <Color x:Key="HtmlTextColor">#FFD</Color> 
     <Color x:Key="HtmlLinkColor">#66c0f4</Color>
 
     <!-- DuplicateHider -->
