@@ -1796,6 +1796,12 @@
 
 																			<Label Name="PART_ElemVersion" Content="{DynamicResource LOCVersionLabel}" />
 																			<Button Name="PART_ButtonVersion" />
+
+																			<Label Name="PART_ElemInstallSize" Content="{DynamicResource LOCSize}" />
+																			<TextBlock Name="PART_TextInstallSize" VerticalAlignment="Center" 
+																				Foreground="{DynamicResource GlyphBrush}"
+																				HorizontalAlignment="{DynamicResource GameDetailsValueHorizontalAlignment}" />
+																				
 																		</GridEx>															
 																	</StackPanel>
 																</Grid>

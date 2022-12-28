@@ -3,6 +3,7 @@ Version: 2.60
     - Added support to Lacro59 Check DLC plugin button.
     - TODO: Added support to Lacro59 Background Changer 
     - Added horizontal scrollbars in main panel when there are clipping components 
+    - Added install size in details
     - TODO: Fixed disabling game session logs in GameActivity plugin it will not show logs tab in expander panel
     - TODO: Added option for have both the library banners and the platform banners
 Version: 2.50
