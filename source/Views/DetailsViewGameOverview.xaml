@@ -1952,6 +1952,8 @@
 																
 															</GridEx>
 														</StackPanel>
+														<ContentControl x:Name="LibraryManagement_PluginAgeRating"  Margin="0,0,3,2" Height="18"
+															HorizontalAlignment="Right" VerticalAlignment="Bottom" />
 													</Grid>
 												</StackPanel>
 												

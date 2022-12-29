@@ -430,8 +430,12 @@
 																		</Style.Triggers>
 																	</Style>
 																</StackPanel.Style>
-																<Image Name="PART_ImageIcon" Height="128" Width="128"
-																	RenderOptions.BitmapScalingMode="Fant" Margin="8,4,8,4"  />
+																<Grid>
+																	<Image Name="PART_ImageIcon" Height="128" Width="128"
+																		RenderOptions.BitmapScalingMode="Fant" Margin="8,4,8,4"  />
+																	<ContentControl x:Name="LibraryManagement_PluginAgeRating"  Margin="0,0,8,4" Height="18"
+																		HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+																</Grid>
 															</StackPanel>
 															<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,2,10,2">								
 															
