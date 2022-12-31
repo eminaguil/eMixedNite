@@ -1520,8 +1520,10 @@
 																						</DataTrigger>
 																					</Style.Triggers>
 																				</Style>
-																			</TabItem.Style>
-																			<ContentControl x:Name="SuccessStory_PluginUserStats" Margin="8,0,8,8" MinHeight="200" MaxHeight="200"/>
+																			</TabItem.Style>																																					
+																			<Grid Height="230" Margin="12">
+																				<ContentControl x:Name="SuccessStory_PluginUserStats" MinHeight="230" MaxHeight="230"/>
+																			</Grid>
 																		</TabItem>
 																		<TabItem> <!-- 3 -->
 																			<TabItem.Header>
@@ -1534,7 +1536,7 @@
 																				<Style TargetType="{x:Type TabItem}"  BasedOn="{StaticResource {x:Type TabItem}}">
 																					<Setter Property="Visibility" Value="Visible" />
 																					<Style.Triggers>
-																						<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=HasData}" Value="False">
+																						<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=HasDataLog}" Value="False">
 																							<Setter Property="Visibility" Value="Collapsed" />
 																						</DataTrigger>
 																						<DataTrigger Binding="{PluginSettings Plugin=GameActivity, Path=EnableIntegrationChartLog}" Value="False">
@@ -1658,7 +1660,7 @@
 																					</Style.Triggers>
 																				</Style>
 																			</TabItem.Style>																			
-																			<GridEx Margin="10,10,16,10" ColumnCount="3" StarColumns="1"
+																			<GridEx Margin="12" ColumnCount="3" StarColumns="1"
 																					RowCount="6" AutoLayoutColumns="3" Height="230">
 
 																				<GridEx.ColumnDefinitions>
@@ -1737,7 +1739,7 @@
 																					</Style.Triggers>
 																				</Style>
 																			</TabItem.Style>
-																			<ContentControl x:Name="NewsViewer_NewsViewerControl" Margin="10" MinHeight="230" MaxHeight="230"/>
+																			<ContentControl x:Name="NewsViewer_NewsViewerControl" Margin="12" MinHeight="230" MaxHeight="230"/>
 																		</TabItem>																		
 																	</TabControl>
 																	<ContentControl x:Name="SuccessStory_PluginProgressBar" Margin="12,12,12,8" Height="30" />
