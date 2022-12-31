@@ -144,10 +144,10 @@
             Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -156,7 +156,23 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TopPanelSelectRandomGameButtonTemplate">
-        <TextBlock Text="&#xef03;" FontFamily="{DynamicResource FontIcoFont}" FontSize="20" 
+        <TextBlock Text="&#xE138;" FontFamily="{DynamicResource FontIcoFont}" FontSize="20" 
+            Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>		
+        </TextBlock>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TopPanelSearchButtonTemplate">
+        <TextBlock Text="&#xed12;" FontFamily="{DynamicResource FontIcoFont}" FontSize="20" 
             Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -167,7 +183,7 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style>		
+            </TextBlock.Style>			
         </TextBlock>
     </DataTemplate>
 
