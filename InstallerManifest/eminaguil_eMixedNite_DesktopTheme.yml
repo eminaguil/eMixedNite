@@ -83,3 +83,16 @@ Packages:
     - Added option for hide the main eMixedNite panel, only the buttons are visible.
     - Fixed description width when details are hidden.
     - Updated to API 2.1.0
+  - Version: 2.60
+    RequiredApiVersion: 2.5.0
+    ReleaseDate: 2023-03-24
+    PackageUrl: https://github.com/eminaguil/eMixedNite/releases/download/2.60/eMixedNite_d3544fdb-be37-4677-b317-7d747adc6b8e_2_60.pthm
+    Changelog:
+    - Added config in ThemeModifier for use Playnite image as Icon / Banner in GridView
+    - Added support to Lacro59 Check DLC plugin button.
+    - Added support to Lacro59 LibraryManagement Plugin Age Rating in the cover / icon in details 
+    - Added horizontals scrollbars in main panel when there are clipping components 
+    - Added custom views for install size and installation directory
+    - Added EA app  banner and icon
+    - Update various images used in banners.
+    - Fixed various issues in the expander panel tabs
