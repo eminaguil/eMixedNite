@@ -79,70 +79,71 @@
                                         <Grid  Width="{Settings GridItemWidth}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                             Visibility="{Binding ElementName=UseItmImageBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
 
-                                            <!-- <ItemsControl ItemsSource="{Binding Platforms}">
-												<ItemsControl.ItemsPanel>
-													<ItemsPanelTemplate>
-														<Grid/>
-													</ItemsPanelTemplate>
-												</ItemsControl.ItemsPanel>
-												<ItemsControl.ItemTemplate>
-													<DataTemplate>
-														<Grid>                                                            
-                                                            <Image Source="{Binding Cover, Converter={StaticResource ImageStringToImageConverter}}" Width="{Settings GridItemWidth}" 
-                                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
-                                                            </Image> 
-														</Grid>
-													</DataTemplate>
-												</ItemsControl.ItemTemplate>
-											</ItemsControl> -->
-
-                                            <Image Source="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
-                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  
-                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            </Image>   
-                                            <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
-                                                Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+                                            <Image 
+                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Setter Property="Source" Value="{Binding ElementName=LibraryBannerPath, Path=Text}" />
+                                                        <Style.Triggers>                                                                
+                                                                                                                        
+                                                            <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False">
+                                                                <Setter Property="Source" Value="{Binding ElementName=LibraryBannerPath, Path=Text}" />
+                                                            </DataTrigger>   
+                                                            
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False" />                                                                        
+                                                                    <Condition Binding="{Binding ElementName=UsePlayniteIconCheck, Path=IsChecked}" Value="False" />
+                                                                    <Condition Binding="{Binding Library}" Value="Playnite" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Source" Value="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                            </MultiDataTrigger>
+                                                                                                                        
+                                                            <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+                                                                <Setter Property="Source" Value="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                            </DataTrigger> 
+                                                            
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
                                             </Image>
                                         </Grid>
                                         <Grid Width="{Settings GridItemWidth}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                             Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Grid.RowDefinitions>
-                                                    <RowDefinition Height="5*" />
-                                                    <RowDefinition Height="90*" />
-                                                    <RowDefinition Height="5*" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="5*" />
-                                                    <ColumnDefinition Width="90*" />
-                                                    <ColumnDefinition Width="5*" />
-                                                </Grid.ColumnDefinitions>
+                                                <RowDefinition Height="5*" />
+                                                <RowDefinition Height="90*" />
+                                                <RowDefinition Height="5*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*" />
+                                                <ColumnDefinition Width="90*" />
+                                                <ColumnDefinition Width="5*" />
+                                            </Grid.ColumnDefinitions>
+
                                             <Image Grid.Row="1" Grid.Column="1" 
-                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Stretch"
-                                                Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
-                                                Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-                                            </Image>
-                                            <Image Grid.Row="1" Grid.Column="1" 
-                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Stretch"
-                                                Source="{Binding ElementName=LibraryIconPath, Path=Text}" >
+                                                HorizontalAlignment="{DynamicResource IconBannerHorizontalAlignment}" VerticalAlignment="Stretch" >
                                                 <Image.Style>
                                                     <Style TargetType="Image">
-                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
-                                                                <Setter Property="Visibility" Value="Visible" />
-                                                            </DataTrigger>                                                            
+                                                        <Setter Property="Source" Value="{Binding ElementName=LibraryIconPath, Path=Text}" />
+                                                        <Setter Property="Control.Visibility" Value="Visible" />
+                                                        <Style.Triggers> 
+                                                            
                                                             <MultiDataTrigger>
-                                                                <MultiDataTrigger.Conditions>
+                                                                <MultiDataTrigger.Conditions>                                                                      
                                                                     <Condition Binding="{Binding ElementName=UsePlayniteIconCheck, Path=IsChecked}" Value="False" />
                                                                     <Condition Binding="{Binding Library}" Value="Playnite" />
                                                                 </MultiDataTrigger.Conditions>
-                                                                <Setter Property="Visibility" Value="Collapsed"  />
+                                                                <Setter Property="Control.Visibility" Value="Collapsed"  />
                                                             </MultiDataTrigger>
+                                                                                                                        
+                                                            <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False">
+                                                                <Setter Property="Source" Value="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                            </DataTrigger>                                                                
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Image.Style>
-                                            </Image>                                                
+                                            </Image>                                 
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -181,19 +182,37 @@
                                             </Image> -->
                                             <Grid 
                                                 Visibility="{Binding ElementName=UseItmImageBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Image Source="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
+                                                <Image 
                                                     Width="{Settings GridItemHeight}" Height="{Binding ElementName=eMixedBannerHeight, Path=Value}"
                                                     RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
                                                     <Image.LayoutTransform>
                                                         <RotateTransform Angle="-90" />
                                                     </Image.LayoutTransform>
-                                                </Image>                                                            
-                                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
-                                                    Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-                                                    Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-                                                    <Image.LayoutTransform>
-                                                        <RotateTransform Angle="-90" />
-                                                    </Image.LayoutTransform>
+                                                    <Image.Style>
+                                                        <Style TargetType="Image">
+                                                            <Setter Property="Source" Value="{Binding ElementName=LibraryBannerPath, Path=Text}" />
+                                                            <Style.Triggers>                                                                
+                                                                                                                          
+                                                                <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False">
+                                                                    <Setter Property="Source" Value="{Binding ElementName=LibraryBannerPath, Path=Text}" />
+                                                                </DataTrigger>   
+                                                                
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False" />                                                                        
+                                                                        <Condition Binding="{Binding ElementName=UsePlayniteIconCheck, Path=IsChecked}" Value="False" />
+                                                                        <Condition Binding="{Binding Library}" Value="Playnite" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Source" Value="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                                </MultiDataTrigger>
+                                                                                                                          
+                                                                <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+                                                                    <Setter Property="Source" Value="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                                </DataTrigger> 
+                                                                
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
                                                 </Image>
                                             </Grid>
                                             <Grid Height="{Settings GridItemHeight}" Width="{Binding ElementName=eMixedBannerHeight, Path=Value}"
@@ -208,36 +227,32 @@
                                                     <ColumnDefinition Width="90*" />
                                                     <ColumnDefinition Width="5*" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
-                                                    Source="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
-                                                    Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-                                                    <Image.LayoutTransform>
-                                                        <RotateTransform Angle="-90" />
-                                                    </Image.LayoutTransform>
-                                                </Image>
-                                                <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
-                                                    Source="{Binding ElementName=LibraryIconPath, Path=Text}"  >
+                                                <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" 
+                                                    VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}" >
                                                     <Image.LayoutTransform>
                                                         <RotateTransform Angle="-90" />
                                                     </Image.LayoutTransform>
                                                     <Image.Style>
                                                         <Style TargetType="Image">
-                                                            <Setter Property="Visibility" Value="Collapsed" />
-                                                            <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
-                                                                    <Setter Property="Visibility" Value="Visible" />
-                                                                </DataTrigger>                                                            
+                                                            <Setter Property="Source" Value="{Binding ElementName=LibraryIconPath, Path=Text}" />
+                                                            <Setter Property="Control.Visibility" Value="Visible" />
+                                                            <Style.Triggers> 
+                                                                
                                                                 <MultiDataTrigger>
-                                                                    <MultiDataTrigger.Conditions>
+                                                                    <MultiDataTrigger.Conditions>                                                                      
                                                                         <Condition Binding="{Binding ElementName=UsePlayniteIconCheck, Path=IsChecked}" Value="False" />
                                                                         <Condition Binding="{Binding Library}" Value="Playnite" />
                                                                     </MultiDataTrigger.Conditions>
-                                                                    <Setter Property="Visibility" Value="Collapsed"  />
+                                                                    <Setter Property="Control.Visibility" Value="Collapsed"  />
                                                                 </MultiDataTrigger>
+                                                                                                                          
+                                                                <DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False">
+                                                                    <Setter Property="Source" Value="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}" />
+                                                                </DataTrigger>                                                                
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Image.Style>
-                                                </Image>                                                
+                                                </Image>
                                             </Grid>
                                         </Grid>
                                     </Grid>

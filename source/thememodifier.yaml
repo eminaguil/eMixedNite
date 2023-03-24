@@ -26,7 +26,7 @@ Constants:
   - TextBannerHorizontalAlignment: Text Banner Horizontal Alignment
   - IconBannerVerticalAlignment: Icon Banner Vertical Alignment
   - IconBannerHorizontalAlignment: Icon Banner Horizontal Alignment
-  - UsePlayniteIcon: Use Playnite Icon in banners
+  - UsePlayniteIcon: In GridView use Playnite image as Icon / Banner 
   - "Details panel"
   - GameDetailsVisible: Details panel visibility
   - GameDetailsColumnToggle: Toggle one colummn instead of two

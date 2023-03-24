@@ -424,6 +424,7 @@
 													</TextBlock>
 													<CheckBox Name="UseItmStoreBannersCheck" IsChecked="{DynamicResource UseItmStoreBanners}" Visibility="Collapsed"/>
 													<CheckBox Name="UseItmIconBannersCheck" IsChecked="{DynamicResource UseItmIconBanners}" Visibility="Collapsed"/>
+													<CheckBox Name="UsePlayniteIconCheck" IsChecked="{DynamicResource UsePlayniteIcon}" Visibility="Collapsed" />
 													<StackPanel >
 														<Grid Tag="{DynamicResource UseItmBanners}"
 															Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -504,40 +505,54 @@
 																	</TextBlock>
 																	<Grid Tag="{DynamicResource UseItmImageBanners}"
 																			Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
-																		<Image Source="{Binding Game.Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" 
-																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" Tag="{DynamicResource UseItmStoreBanners}"
-																				Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}">
+																		<Image 
+																			Width="{Settings GridItemHeight}" Height="{DynamicResource BannersHeight}"
+																			RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both"  >
 																			<Image.LayoutTransform>
 																				<RotateTransform Angle="-90" />
 																			</Image.LayoutTransform>
-																		</Image>
-																		<Image Tag="{DynamicResource UseItmStoreBanners}"
-																				RenderOptions.BitmapScalingMode="Fant" Stretch="Fill" StretchDirection="Both" 
-																				Source="{Binding ElementName=LibraryBannerPath, Path=Text}"
-																				Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Tag, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
-																			<Image.LayoutTransform>
-																				<RotateTransform Angle="-90" />
-																			</Image.LayoutTransform>
+																			<Image.Style>
+																				<Style TargetType="Image">
+																					<Setter Property="Source" Value="{Binding ElementName=LibraryBannerPath, Path=Text}" />
+																					<Style.Triggers> 																																
+																						<DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="True">
+																							<Setter Property="Source" Value="{Binding Platforms[0].Cover, Converter={StaticResource ImageStringToImageConverter}}" />
+																						</DataTrigger> 
+																						
+																					</Style.Triggers>
+																				</Style>
+																			</Image.Style>
 																		</Image>
 																	</Grid>
-																	<Grid 
+																	<Grid Height="{Settings GridItemHeight}" Width="{DynamicResource BannersHeight}"
 																		Visibility="{Binding ElementName=UseItmIconBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-																		<Image  Margin="0,2,2,0" Height="20" 
-																			HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
-																			Source="{Binding Game.Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}"
-																			Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+																		<Grid.RowDefinitions>
+																			<RowDefinition Height="5*" />
+																			<RowDefinition Height="90*" />
+																			<RowDefinition Height="5*" />
+																		</Grid.RowDefinitions>
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition Width="5*" />
+																			<ColumnDefinition Width="90*" />
+																			<ColumnDefinition Width="5*" />
+																		</Grid.ColumnDefinitions>
+																		<Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" 
+																			VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}" >
 																			<Image.LayoutTransform>
 																				<RotateTransform Angle="-90" />
 																			</Image.LayoutTransform>
+																			<Image.Style>
+																				<Style TargetType="Image">
+																					<Setter Property="Source" Value="{Binding ElementName=LibraryIconPath, Path=Text}" />
+																					<Setter Property="Control.Visibility" Value="Visible" />
+																					<Style.Triggers> 																																				
+																						<DataTrigger Binding="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked}" Value="False">
+																							<Setter Property="Source" Value="{Binding Platforms[0].Icon, Converter={StaticResource ImageStringToImageConverter}}" />
+																						</DataTrigger>                                                                
+																					</Style.Triggers>
+																				</Style>
+																			</Image.Style>
 																		</Image>
-																		<Image  Margin="0,2,2,0" Height="20" 
-																			HorizontalAlignment="Center" VerticalAlignment="{DynamicResource IconBannerVerticalAlignment}"
-																			Source="{Binding ElementName=LibraryIconPath, Path=Text}" 
-																			Visibility="{Binding ElementName=UseItmStoreBannersCheck, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}">
-																			<Image.LayoutTransform>
-																				<RotateTransform Angle="-90" />
-																			</Image.LayoutTransform>
-																		</Image>                                                
 																	</Grid>
 																</Grid>
 															</Grid>
@@ -788,6 +803,7 @@
 																	Style="{StaticResource SimpleButton}" Foreground="{DynamicResource TextBrushDark}" />
 															</StackPanel>
 														</Grid>
+														
 														<Grid Name="PART_ElemLastPlayed" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
 															<Grid.RowDefinitions>
 																<RowDefinition Height="*" />
