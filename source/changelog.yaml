@@ -1,9 +1,12 @@
 ChangeLog: eMixedNite
 Version: 2.60
+    - Added config in ThemeModifier for use Playnite image as Icon / Banner in GridView
     - Added support to Lacro59 Check DLC plugin button.
     - Added support to Lacro59 LibraryManagement Plugin Age Rating in the cover / icon in details 
     - Added horizontals scrollbars in main panel when there are clipping components 
     - Added install size in details
+    - Added EA app  banner and icon
+    - Update various images used in banners.
     - Fixed various issues in the expander panel tabs
 Version: 2.50
     - Added option for show playnite icon in banner
