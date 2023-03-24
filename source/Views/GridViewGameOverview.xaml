@@ -809,6 +809,47 @@
 															</StackPanel>
 															
 														</Grid>
+														
+														<Grid  Margin="0,0,0,0" Height="Auto"  
+															Width="{Binding ElementName=Container,Path=ActualWidth}">
+															<Grid Margin="0,0,0,0">
+																<Grid.Style>
+																	<Style>
+																		<Setter Property="Control.Visibility" Value="Collapsed" />
+																		<Style.Triggers>
+																			<DataTrigger Binding="{Binding ElementName=eMnMainPanelToggle, Path=IsChecked}" Value="True">
+																				<Setter Property="Control.Visibility" Value="Visible" />
+																			</DataTrigger>
+																		</Style.Triggers>
+																	</Style>
+																</Grid.Style>
+																<Grid.ColumnDefinitions>
+																	<ColumnDefinition Width="Auto"/>
+																	<ColumnDefinition Width="*" />
+																</Grid.ColumnDefinitions>
+
+																<StackPanel Orientation="Horizontal"  Grid.Column="0" Name="PART_ElemInstallSize" >
+																	<Label Margin="8,4,8,0" Content=""  ToolTip="{DynamicResource LOCSize}"
+																		FontFamily="{StaticResource FontIcoFont}" FontSize="21"
+																		VerticalAlignment="Center" HorizontalAlignment="Center" 
+																		Foreground="{DynamicResource GlyphBrush}"/>															
+																	<TextBlock Name="PART_TextInstallSize" 
+																		VerticalAlignment="Center"  HorizontalAlignment="Left" Foreground="{DynamicResource TextBrush}" 
+																		FontSize="18" FontFamily="Corbel" Typography.Capitals="AllSmallCaps" />			
+																</StackPanel>
+
+																<StackPanel Orientation="Horizontal" Grid.Column="1" Name="PART_ElemInstallDirectory">
+																	<Label Margin="8,4,8,0"  ToolTip="{DynamicResource LOCExtensionInstallDir}"
+																		Content=""  FontFamily="{StaticResource FontIcoFont}" FontSize="21"
+																			VerticalAlignment="Center" HorizontalAlignment="Center" 
+																			Foreground="{DynamicResource GlyphBrush}"/>
+																	<Button Name="PART_ButtonInstallDirectory" Cursor="Hand"
+																		VerticalAlignment="Center" HorizontalAlignment="Left" Typography.Capitals="AllSmallCaps"
+																		Foreground="{DynamicResource TextBrush}" Background="Transparent" Padding="0"/>
+																</StackPanel>
+																
+															</Grid>															
+														</Grid>
 															
 														<CheckBox Name="HideHltbOnExpanderCheck" IsChecked="{DynamicResource HideHltbOnExpander}" Visibility="Collapsed" />
 														<Grid Margin="0,0,0,0">		
@@ -1407,7 +1448,7 @@
 																								</Style.Triggers>
 																							</Style>
 																						</TabItem.Style>
-																						<ContentControl x:Name="GameActivity_PluginChartLog" Margin="12" MinHeight="230" MaxHeight="230"/>
+																						<ContentControl x:Name="GameActivity_PluginChartLog" MinHeight="230" MaxHeight="230"/>
 																					</TabItem>
 																					<TabItem>
 																						<TabItem.Header>
@@ -1715,7 +1756,12 @@
 																						</Style>
 																					</ItemsControl.ItemContainerStyle>
 																				</ItemsControl>
-																			</StackPanel>
+																			</StackPanel>																
+
+																			<Label Name="PART_ElemAdded" Content="{DynamicResource LOCDateAddedLabel}" />
+																			<TextBlock Name="PART_TextAdded" VerticalAlignment="Center" 
+																				Foreground="{DynamicResource GlyphBrush}"
+																				HorizontalAlignment="{DynamicResource GameDetailsValueHorizontalAlignment}" /> 
 
 																			<Label Name="PART_ElemReleaseDate" Content="{DynamicResource LOCGameReleaseDateTitle}" />
 																			<Button Name="PART_ButtonReleaseDate" VerticalAlignment="Center"/>
@@ -1802,12 +1848,6 @@
 
 																			<Label Name="PART_ElemVersion" Content="{DynamicResource LOCVersionLabel}" />
 																			<Button Name="PART_ButtonVersion" />
-
-																			<Label Name="PART_ElemInstallSize" Content="{DynamicResource LOCSize}" />
-																			<TextBlock Name="PART_TextInstallSize" VerticalAlignment="Center" 
-																				Foreground="{DynamicResource GlyphBrush}"
-																				HorizontalAlignment="{DynamicResource GameDetailsValueHorizontalAlignment}" />
-																				
 																		</GridEx>															
 																	</StackPanel>
 																</Grid>
